@@ -1,0 +1,37 @@
+CRITICAL - 2026-04-29 08:55:28 --> ArgumentCountError: Too few arguments to function CodeIgniter\Router\RouteCollection::get(), 1 passed in /home/miaronr/Documents/projets_s4/WEB/gestion-notes/app/Config/Routes.php on line 10 and at least 2 expected
+[Method: CLI, Route: serve]
+in SYSTEMPATH/Router/RouteCollection.php on line 1050.
+ 1 APPPATH/Config/Routes.php(10): CodeIgniter\Router\RouteCollection->get()
+ 2 SYSTEMPATH/Router/RouteCollection.php(799): CodeIgniter\Router\RouteCollection->{closure}()
+ 3 APPPATH/Config/Routes.php(9): CodeIgniter\Router\RouteCollection->group()
+ 4 SYSTEMPATH/Router/RouteCollection.php(339): require('/home/miaronr/Documents/projets_s4/WEB/gestion-notes/app/Config/Routes.php')
+ 5 SYSTEMPATH/CLI/Console.php(41): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+ 7 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+ 8 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+CRITICAL - 2026-04-29 08:55:57 --> ArgumentCountError: Too few arguments to function CodeIgniter\Router\RouteCollection::get(), 1 passed in /home/miaronr/Documents/projets_s4/WEB/gestion-notes/app/Config/Routes.php on line 10 and at least 2 expected
+[Method: GET, Route: /]
+in SYSTEMPATH/Router/RouteCollection.php on line 1050.
+ 1 APPPATH/Config/Routes.php(10): CodeIgniter\Router\RouteCollection->get()
+ 2 SYSTEMPATH/Router/RouteCollection.php(799): CodeIgniter\Router\RouteCollection->{closure}()
+ 3 APPPATH/Config/Routes.php(9): CodeIgniter\Router\RouteCollection->group()
+ 4 SYSTEMPATH/Router/RouteCollection.php(339): require('/home/miaronr/Documents/projets_s4/WEB/gestion-notes/app/Config/Routes.php')
+ 5 SYSTEMPATH/CodeIgniter.php(818): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH/CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt()
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-29 09:00:07 --> ArgumentCountError: Too few arguments to function CodeIgniter\Router\RouteCollection::get(), 1 passed in /home/miaronr/Documents/projets_s4/WEB/gestion-notes/app/Config/Routes.php on line 10 and at least 2 expected
+[Method: GET, Route: /]
+in SYSTEMPATH/Router/RouteCollection.php on line 1050.
+ 1 APPPATH/Config/Routes.php(10): CodeIgniter\Router\RouteCollection->get()
+ 2 SYSTEMPATH/Router/RouteCollection.php(799): CodeIgniter\Router\RouteCollection->{closure}()
+ 3 APPPATH/Config/Routes.php(9): CodeIgniter\Router\RouteCollection->group()
+ 4 SYSTEMPATH/Router/RouteCollection.php(339): require('/home/miaronr/Documents/projets_s4/WEB/gestion-notes/app/Config/Routes.php')
+ 5 SYSTEMPATH/CodeIgniter.php(818): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 6 SYSTEMPATH/CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt()
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
