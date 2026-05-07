@@ -29,7 +29,7 @@ class Database extends Config
         'hostname'     => '127.0.0.1',
         'username'     => 'root',
         'password'     => '',
-        'database'     => 'tp_gestion_notes',
+        'database'     => 'projet_diet_s4',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,

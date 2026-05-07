@@ -7,12 +7,12 @@ use App\Controllers\NotesController;
 /**
  * @var RouteCollection $routes
  */
+$routes->get('inscription', 'InscriptionController::index');
+$routes->post('inscription/store', 'InscriptionController::store');
+$routes->get('inscription/etape2', 'InscriptionController::etape2');
+$routes->post('inscription/finaliser', 'InscriptionController::finaliser');
+$routes->get('profil', 'InscriptionController::profil');
+$routes->get('profil/modifier', 'InscriptionController::edit');
+$routes->post('profil/modifier', 'InscriptionController::update');
 
-$routes->group("etudiants", function($routes){
-    $routes->get("/", "EtudiantController::liste");
-});
-
-$routes->group("notes", function($routes){
-    $routes->get("/create", "NotesController::create");
-    $routes->post("/store", "NotesController::store");
-});
+?>
