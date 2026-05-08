@@ -103,6 +103,101 @@ class SuggestionController extends BaseController
         return redirect()->to('/suggestions');
     }
 
+    public function exportPdf()
+    {
+        $userId = session()->get('user')['id'] ?? null;
+        if (!$userId) return redirect()->to('/login');
+
+        $regimeId = (int) $this->request->getPost('regime_id');
+        $activiteId = (int) $this->request->getPost('activite_id');
+
+        if (!$regimeId || !$activiteId) {
+            session()->setFlashdata('error', 'Veuillez choisir un régime et une activité avant l’export.');
+            return redirect()->back();
+        }
+
+        $utilisateurModel = new UtilisateurModel();
+        $utilisateur = $utilisateurModel->find($userId);
+        if (!$utilisateur) return redirect()->to('/login');
+
+        $suggestions = $this->calculerSuggestions($utilisateur, $utilisateurModel);
+
+        $regimeSelection = null;
+        foreach ($suggestions['regimes'] as $regime) {
+            if ((int) $regime['id'] === $regimeId) {
+                $regimeSelection = $regime;
+                break;
+            }
+        }
+
+        if (!$regimeSelection) {
+            session()->setFlashdata('error', 'Régime sélectionné invalide.');
+            return redirect()->back();
+        }
+
+        $activiteSelection = null;
+        foreach ($suggestions['activites'] as $activite) {
+            if ((int) $activite['id'] === $activiteId) {
+                $activiteSelection = $activite;
+                break;
+            }
+        }
+
+        if (!$activiteSelection) {
+            session()->setFlashdata('error', 'Activité sélectionnée invalide pour votre objectif.');
+            return redirect()->back();
+        }
+
+        if (!class_exists('\FPDF')) {
+            $autoload = ROOTPATH . 'vendor/autoload.php';
+            if (is_file($autoload)) {
+                require_once $autoload;
+            }
+        }
+
+        if (!class_exists('\FPDF')) {
+            session()->setFlashdata('error', 'La librairie PDF est indisponible.');
+            return redirect()->back();
+        }
+
+        $pdf = new \FPDF();
+        $pdf->AddPage();
+        $pdf->SetFont('Arial', 'B', 16);
+        $pdf->Cell(0, 10, utf8_decode('Suggestions de régimes'), 0, 1, 'C');
+
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->Cell(0, 8, utf8_decode('Utilisateur : ' . $utilisateur['nom'] . ' ' . $utilisateur['prenom']), 0, 1);
+        $pdf->Cell(0, 7, utf8_decode('Poids actuel : ' . number_format($utilisateur['poids_actuel'], 2) . ' kg'), 0, 1);
+        $pdf->Cell(0, 7, utf8_decode('Poids cible : ' . number_format($suggestions['calculs']['poids_cible'], 2) . ' kg'), 0, 1);
+        $pdf->Cell(0, 7, utf8_decode('Variation nécessaire : ' . number_format($suggestions['calculs']['delta_kg'], 2) . ' kg'), 0, 1);
+
+        $pdf->Ln(4);
+        $pdf->SetFont('Arial', 'B', 13);
+        $pdf->Cell(0, 8, utf8_decode('Régime sélectionné'), 0, 1);
+        $pdf->SetFont('Arial', '', 11);
+        $pdf->Cell(0, 6, utf8_decode('Nom : ' . $regimeSelection['nom']), 0, 1);
+        $pdf->MultiCell(0, 6, utf8_decode('Description : ' . $regimeSelection['description']));
+        $pdf->Cell(0, 6, utf8_decode('Variation/sem : ' . $regimeSelection['variation_kg_semaine'] . ' kg'), 0, 1);
+        $pdf->Cell(0, 6, utf8_decode('Durée estimée : ' . $regimeSelection['duree_calculee'] . ' semaines'), 0, 1);
+        $prixAffiche = !empty($regimeSelection['remise_gold']) && $regimeSelection['remise_gold'] > 0
+            ? $regimeSelection['prix_final']
+            : $regimeSelection['prix_base'];
+        $pdf->Cell(0, 6, utf8_decode('Prix : ' . number_format($prixAffiche, 0, ',', ' ') . ' Ar'), 0, 1);
+
+        $pdf->Ln(3);
+        $pdf->SetFont('Arial', 'B', 13);
+        $pdf->Cell(0, 8, utf8_decode('Activité sportive choisie'), 0, 1);
+        $pdf->SetFont('Arial', '', 11);
+        $pdf->Cell(0, 6, utf8_decode('Nom : ' . $activiteSelection['nom']), 0, 1);
+        $pdf->MultiCell(0, 6, utf8_decode('Description : ' . $activiteSelection['description']));
+        $pdf->Cell(0, 6, utf8_decode('Intensité : ' . ucfirst($activiteSelection['intensite'])), 0, 1);
+
+        return $this->response
+            ->setHeader('Content-Type', 'application/pdf')
+            ->setHeader('Content-Disposition', 'attachment; filename="suggestion_regime.pdf"')
+            ->setBody($pdf->Output('S'));
+    }
+
     private function calculerSuggestions($utilisateur, $utilisateurModel)
     {
         $regimeModel = new RegimeModel();
@@ -125,7 +220,6 @@ class SuggestionController extends BaseController
             $poidsCible = $poidsActuel + $valeurObjectif;
             $direction = 'augmenter';
         } elseif ($objectifType === 'imc_ideal') {
-            // Utiliser le même poids idéal que dans le formulaire d'objectif
             $poidsCible = $valeurObjectif > 0 ? $valeurObjectif : (float) $utilisateurModel->getPoidsIdeal($utilisateur['id']);
             
             if ($poidsActuel > $poidsCible) {
