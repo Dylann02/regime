@@ -31,6 +31,8 @@
 
             <div class="actions">
                 <a href="<?= base_url('profil/modifier') ?>" class="btn">Modifier profil</a>
+                <a href="<?= base_url('suggestions') ?>" class="btn">Voir les suggestions de régime</a>
+                <a href="<?= base_url('gold') ?>" class="btn">Passer à l'option Gold</a>
                 <a href="<?= base_url('logout') ?>" class="btn logout-btn">Déconnexion</a>
             </div>
         <?php else: ?>
