@@ -17,7 +17,6 @@
         <?php if (!empty($utilisateur)): ?>
             <div class="info"><strong>Nom :</strong> <?= esc($utilisateur['nom']) ?></div>
             <div class="info"><strong>Prénom :</strong> <?= esc($utilisateur['prenom']) ?></div>
-            <div class="info"><strong>Email :</strong> <?= esc($utilisateur['email']) ?></div>
             <div class="info"><strong>Genre :</strong> <?= esc($utilisateur['genre']) ?></div>
             <div class="info"><strong>Date de naissance :</strong> <?= esc($utilisateur['date_naissance']) ?></div>
             <div class="info"><strong>Taille :</strong> <?= esc($utilisateur['taille_cm']) ?> cm</div>
@@ -26,17 +25,13 @@
             <div class="info"><strong>Solde :</strong> <?= number_format($utilisateur['solde'] ?? 0, 2) ?> €</div>
             <div class="info"><strong>Statut Gold :</strong> <?= ($utilisateur['est_gold'] ?? 0) ? 'Oui' : 'Non' ?></div>
 
-            <?php if (!empty($utilisateur['taille_cm']) && !empty($utilisateur['poids_actuel'])): ?>
-                <div class="info"><strong>IMC :</strong> <?= number_format($utilisateur['poids_actuel'] / (($utilisateur['taille_cm']/100) ** 2), 2) ?></div>
+            <?php if (!empty($imc)): ?>
+                <div class="info"><strong>IMC :</strong> <?= number_format($imc, 2) ?></div>
             <?php endif; ?>
 
             <div class="actions">
-                <a href="<?= base_url('profil/modifier') ?>">
-                    <button type="button">Modifier profil</button>
-                </a>
-                <a href="<?= base_url('logout') ?>">
-                    <button type="button" class="logout-btn">Déconnexion</button>
-                </a>
+                <a href="<?= base_url('profil/modifier') ?>" class="btn">Modifier profil</a>
+                <a href="<?= base_url('logout') ?>" class="btn logout-btn">Déconnexion</a>
             </div>
         <?php else: ?>
             <p>Utilisateur introuvable.</p>

@@ -19,6 +19,8 @@ $routes->get('inscription', 'InscriptionController::index');
 $routes->post('inscription/store', 'InscriptionController::store');
 $routes->get('inscription/etape2', 'InscriptionController::etape2');
 $routes->post('inscription/finaliser', 'InscriptionController::finaliser');
+$routes->get('inscription/choix_objectif', 'InscriptionController::choixObjectif');
+$routes->post('inscription/save_objectif', 'InscriptionController::saveObjectif');
 
 
 $routes->group('',['filter' => 'auth'], function($routes) {

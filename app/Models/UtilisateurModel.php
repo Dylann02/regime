@@ -19,6 +19,7 @@ class UtilisateurModel extends Model
         'taille_cm',
         'poids_actuel',
         'objectif_actuel',
+        'valeur_objectif',
         'solde',
         'est_gold',
     ];
@@ -105,4 +106,33 @@ class UtilisateurModel extends Model
         ]
     ];
 
+    public function getIMC($id)
+    {
+        $utilisateur = $this->find($id);
+        if ($utilisateur) {
+            $taille_m = $utilisateur['taille_cm'] / 100; // Convertir cm en m
+            if ($taille_m > 0) {
+                return round($utilisateur['poids_actuel'] / ($taille_m * $taille_m), 2);
+            }
+        }
+        return null; // Retourner null si l'utilisateur n'existe pas ou si la taille est invalide
+    }
+
+    public function getPoidsIdeal($id)
+    {
+        $utilisateur = $this->find($id);
+        if ($utilisateur) {
+            $taille_cm = $utilisateur['taille_cm'];
+            $genre = $utilisateur['genre'];
+            if ($taille_cm > 0) {
+                // Formule de Lorentz
+                if ($genre === 'femme') {
+                    return round($taille_cm - 100 - ($taille_cm - 150) / 2.5, 2);
+                } else {
+                    return round($taille_cm - 100 - ($taille_cm - 150) / 4, 2);
+                }
+            }
+        }
+        return null;
+    }
 }
