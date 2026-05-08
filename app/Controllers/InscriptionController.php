@@ -86,7 +86,48 @@ class InscriptionController extends BaseController
             ]);
         }
 
-        $model->set($data)->where('id', $userId)->update();
+        $model->update($userId, $data);
+        
+        return redirect()->to('/inscription/choix_objectif');
+    }
+
+    public function choixObjectif()
+    {
+        $userId = session()->get('user_id');
+        if (! $userId) {
+            return redirect()->to('/login');
+        }
+
+        $model = new UtilisateurModel();
+        $utilisateur = $model->find($userId);
+
+        if (! $utilisateur) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Utilisateur introuvable');
+        }
+
+        return view('choix_objectif', [
+            'utilisateur' => $utilisateur,
+            'imc' => $model->getIMC($userId),
+            'poidsIdeal' => $model->getPoidsIdeal($userId)
+        ]);
+    }
+
+    public function saveObjectif()
+    {
+        $userId = session()->get('user_id');
+        if (! $userId) {
+            return redirect()->to('/login');
+        }
+
+        $model = new UtilisateurModel();
+        
+        $objectif_actuel = $this->request->getPost('objectif_actuel');
+        $valeur_objectif = $this->request->getPost('valeur_objectif');
+        
+        $model->update($userId, [
+            'objectif_actuel' => $objectif_actuel,
+            'valeur_objectif' => $valeur_objectif
+        ]);
         
         $utilisateur = $model->find($userId);
         session()->set('user', [
@@ -109,13 +150,15 @@ class InscriptionController extends BaseController
 
         $model = new UtilisateurModel();
         $utilisateur = $model->find($user['id']);
+        $imc = $model->getIMC($user['id']);
 
         if (! $utilisateur) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Utilisateur introuvable');
         }
 
         return view('profil', [
-            'utilisateur' => $utilisateur
+            'utilisateur' => $utilisateur,
+            'imc' => $imc
         ]);
     }
 
