@@ -28,6 +28,8 @@ $routes->group('',['filter' => 'auth'], function($routes) {
     $routes->get('profil/modifier', 'InscriptionController::edit');
     $routes->post('profil/modifier', 'InscriptionController::update');
     $routes->get('suggestions', 'SuggestionController::index');
+    $routes->get('suggestions/export-pdf', 'SuggestionController::exportPdf');
+    $routes->post('suggestions/export-pdf', 'SuggestionController::exportPdf');
     $routes->post('souscrire', 'SuggestionController::souscrire');
     $routes->get('gold', 'GoldController::index');
     $routes->get('gold/activer', 'GoldController::activerForm');
