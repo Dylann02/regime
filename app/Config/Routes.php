@@ -27,6 +27,11 @@ $routes->group('',['filter' => 'auth'], function($routes) {
     $routes->get('profil', 'InscriptionController::profil');
     $routes->get('profil/modifier', 'InscriptionController::edit');
     $routes->post('profil/modifier', 'InscriptionController::update');
+    $routes->get('suggestions', 'SuggestionController::index');
+    $routes->post('souscrire', 'SuggestionController::souscrire');
+    $routes->get('gold', 'GoldController::index');
+    $routes->get('gold/activer', 'GoldController::activerForm');
+    $routes->post('gold/activer', 'GoldController::activer');
     $routes->get('logout', 'AuthController::logout');
 });
 ?>
