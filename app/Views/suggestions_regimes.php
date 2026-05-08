@@ -20,6 +20,7 @@
         <p>Variation nécessaire : <?= number_format($donneesCalcul['delta_kg'], 2) ?> kg</p>
     </div>
 
+
     <h2>Régimes adaptés</h2>
     <div class="regimes-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
         <?php foreach ($suggestions as $regime): ?>
@@ -47,6 +48,9 @@
                         <?php endforeach; ?>
                     </select>
                     <button type="submit">Choisir ce régime</button>
+                    <button type="submit" formaction="<?= base_url('suggestions/export-pdf') ?>" formmethod="post">
+                        Exporter en PDF
+                    </button>
                 </form>
             </div>
         <?php endforeach; ?>
