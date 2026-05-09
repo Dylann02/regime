@@ -1,0 +1,727 @@
+ERROR - 2026-05-08 06:12:30 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'projet_diet_s4' in /Users/dylan/Documents/App/S4/SI/regime/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /Users/dylan/Documents/App/S4/SI/regime/system/Database/MySQLi/Connection.php(201): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'projet_diet_s4', 3306, '', 0)
+#1 /Users/dylan/Documents/App/S4/SI/regime/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /Users/dylan/Documents/App/S4/SI/regime/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /Users/dylan/Documents/App/S4/SI/regime/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 /Users/dylan/Documents/App/S4/SI/regime/system/Validation/Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 /Users/dylan/Documents/App/S4/SI/regime/system/Validation/StrictRules/Rules.php(187): CodeIgniter\Validation\Rules->is_unique('dylan@gmail.com', 'utilisateurs.em...', Array)
+#6 /Users/dylan/Documents/App/S4/SI/regime/system/Validation/Validation.php(345): CodeIgniter\Validation\StrictRules\Rules->is_unique('dylan@gmail.com', 'utilisateurs.em...', Array, NULL, 'email')
+#7 /Users/dylan/Documents/App/S4/SI/regime/system/Validation/Validation.php(210): CodeIgniter\Validation\Validation->processRules('email', 'email', 'dylan@gmail.com', Array, Array, 'email')
+#8 /Users/dylan/Documents/App/S4/SI/regime/system/BaseModel.php(1615): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 /Users/dylan/Documents/App/S4/SI/regime/app/Controllers/InscriptionController.php(27): CodeIgniter\BaseModel->validate(Array)
+#10 /Users/dylan/Documents/App/S4/SI/regime/system/CodeIgniter.php(951): App\Controllers\InscriptionController->store()
+#11 /Users/dylan/Documents/App/S4/SI/regime/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+#12 /Users/dylan/Documents/App/S4/SI/regime/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /Users/dylan/Documents/App/S4/SI/regime/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#14 /Users/dylan/Documents/App/S4/SI/regime/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#15 /Users/dylan/Documents/App/S4/SI/regime/public/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#16 /Users/dylan/Documents/App/S4/SI/regime/system/rewrite.php(44): require_once('/Users/dylan/Do...')
+#17 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'projet_diet_s4' in /Users/dylan/Documents/App/S4/SI/regime/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /Users/dylan/Documents/App/S4/SI/regime/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /Users/dylan/Documents/App/S4/SI/regime/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /Users/dylan/Documents/App/S4/SI/regime/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 /Users/dylan/Documents/App/S4/SI/regime/system/Validation/Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 /Users/dylan/Documents/App/S4/SI/regime/system/Validation/StrictRules/Rules.php(187): CodeIgniter\Validation\Rules->is_unique('dylan@gmail.com', 'utilisateurs.em...', Array)
+#5 /Users/dylan/Documents/App/S4/SI/regime/system/Validation/Validation.php(345): CodeIgniter\Validation\StrictRules\Rules->is_unique('dylan@gmail.com', 'utilisateurs.em...', Array, NULL, 'email')
+#6 /Users/dylan/Documents/App/S4/SI/regime/system/Validation/Validation.php(210): CodeIgniter\Validation\Validation->processRules('email', 'email', 'dylan@gmail.com', Array, Array, 'email')
+#7 /Users/dylan/Documents/App/S4/SI/regime/system/BaseModel.php(1615): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 /Users/dylan/Documents/App/S4/SI/regime/app/Controllers/InscriptionController.php(27): CodeIgniter\BaseModel->validate(Array)
+#9 /Users/dylan/Documents/App/S4/SI/regime/system/CodeIgniter.php(951): App\Controllers\InscriptionController->store()
+#10 /Users/dylan/Documents/App/S4/SI/regime/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+#11 /Users/dylan/Documents/App/S4/SI/regime/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 /Users/dylan/Documents/App/S4/SI/regime/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#13 /Users/dylan/Documents/App/S4/SI/regime/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 /Users/dylan/Documents/App/S4/SI/regime/public/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 /Users/dylan/Documents/App/S4/SI/regime/system/rewrite.php(44): require_once('/Users/dylan/Do...')
+#16 {main}
+CRITICAL - 2026-05-08 06:12:30 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'projet_diet_s4'
+[Method: POST, Route: inscription/store]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `utilisateurs`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH/Validation/Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/Validation/StrictRules/Rules.php(187): CodeIgniter\Validation\Rules->is_unique('dylan@gmail.com', 'utilisateurs.email', [...])
+ 5 SYSTEMPATH/Validation/Validation.php(345): CodeIgniter\Validation\StrictRules\Rules->is_unique('dylan@gmail.com', 'utilisateurs.email', [...], null, 'email')
+ 6 SYSTEMPATH/Validation/Validation.php(210): CodeIgniter\Validation\Validation->processRules('email', 'email', 'dylan@gmail.com', [...], [...], 'email')
+ 7 SYSTEMPATH/BaseModel.php(1615): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 APPPATH/Controllers/InscriptionController.php(27): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->store()
+10 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+11 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+ERROR - 2026-05-08 06:15:32 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'projet_diet_s4' in /Users/dylan/Documents/App/S4/SI/regime/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /Users/dylan/Documents/App/S4/SI/regime/system/Database/MySQLi/Connection.php(201): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'projet_diet_s4', 3306, '', 0)
+#1 /Users/dylan/Documents/App/S4/SI/regime/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /Users/dylan/Documents/App/S4/SI/regime/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /Users/dylan/Documents/App/S4/SI/regime/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 /Users/dylan/Documents/App/S4/SI/regime/system/Validation/Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 /Users/dylan/Documents/App/S4/SI/regime/system/Validation/StrictRules/Rules.php(187): CodeIgniter\Validation\Rules->is_unique('dylan@gmail.com', 'utilisateurs.em...', Array)
+#6 /Users/dylan/Documents/App/S4/SI/regime/system/Validation/Validation.php(345): CodeIgniter\Validation\StrictRules\Rules->is_unique('dylan@gmail.com', 'utilisateurs.em...', Array, NULL, 'email')
+#7 /Users/dylan/Documents/App/S4/SI/regime/system/Validation/Validation.php(210): CodeIgniter\Validation\Validation->processRules('email', 'email', 'dylan@gmail.com', Array, Array, 'email')
+#8 /Users/dylan/Documents/App/S4/SI/regime/system/BaseModel.php(1615): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#9 /Users/dylan/Documents/App/S4/SI/regime/app/Controllers/InscriptionController.php(36): CodeIgniter\BaseModel->validate(Array)
+#10 /Users/dylan/Documents/App/S4/SI/regime/system/CodeIgniter.php(951): App\Controllers\InscriptionController->store()
+#11 /Users/dylan/Documents/App/S4/SI/regime/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+#12 /Users/dylan/Documents/App/S4/SI/regime/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /Users/dylan/Documents/App/S4/SI/regime/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#14 /Users/dylan/Documents/App/S4/SI/regime/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#15 /Users/dylan/Documents/App/S4/SI/regime/public/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#16 /Users/dylan/Documents/App/S4/SI/regime/system/rewrite.php(44): require_once('/Users/dylan/Do...')
+#17 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'projet_diet_s4' in /Users/dylan/Documents/App/S4/SI/regime/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /Users/dylan/Documents/App/S4/SI/regime/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /Users/dylan/Documents/App/S4/SI/regime/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /Users/dylan/Documents/App/S4/SI/regime/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 /Users/dylan/Documents/App/S4/SI/regime/system/Validation/Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#4 /Users/dylan/Documents/App/S4/SI/regime/system/Validation/StrictRules/Rules.php(187): CodeIgniter\Validation\Rules->is_unique('dylan@gmail.com', 'utilisateurs.em...', Array)
+#5 /Users/dylan/Documents/App/S4/SI/regime/system/Validation/Validation.php(345): CodeIgniter\Validation\StrictRules\Rules->is_unique('dylan@gmail.com', 'utilisateurs.em...', Array, NULL, 'email')
+#6 /Users/dylan/Documents/App/S4/SI/regime/system/Validation/Validation.php(210): CodeIgniter\Validation\Validation->processRules('email', 'email', 'dylan@gmail.com', Array, Array, 'email')
+#7 /Users/dylan/Documents/App/S4/SI/regime/system/BaseModel.php(1615): CodeIgniter\Validation\Validation->run(Array, NULL, NULL)
+#8 /Users/dylan/Documents/App/S4/SI/regime/app/Controllers/InscriptionController.php(36): CodeIgniter\BaseModel->validate(Array)
+#9 /Users/dylan/Documents/App/S4/SI/regime/system/CodeIgniter.php(951): App\Controllers\InscriptionController->store()
+#10 /Users/dylan/Documents/App/S4/SI/regime/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+#11 /Users/dylan/Documents/App/S4/SI/regime/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 /Users/dylan/Documents/App/S4/SI/regime/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#13 /Users/dylan/Documents/App/S4/SI/regime/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 /Users/dylan/Documents/App/S4/SI/regime/public/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 /Users/dylan/Documents/App/S4/SI/regime/system/rewrite.php(44): require_once('/Users/dylan/Do...')
+#16 {main}
+CRITICAL - 2026-05-08 06:15:32 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'projet_diet_s4'
+[Method: POST, Route: inscription/store]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `utilisateurs`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH/Validation/Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/Validation/StrictRules/Rules.php(187): CodeIgniter\Validation\Rules->is_unique('dylan@gmail.com', 'utilisateurs.email', [...])
+ 5 SYSTEMPATH/Validation/Validation.php(345): CodeIgniter\Validation\StrictRules\Rules->is_unique('dylan@gmail.com', 'utilisateurs.email', [...], null, 'email')
+ 6 SYSTEMPATH/Validation/Validation.php(210): CodeIgniter\Validation\Validation->processRules('email', 'email', 'dylan@gmail.com', [...], [...], 'email')
+ 7 SYSTEMPATH/BaseModel.php(1615): CodeIgniter\Validation\Validation->run([...], null, null)
+ 8 APPPATH/Controllers/InscriptionController.php(36): CodeIgniter\BaseModel->validate([...])
+ 9 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->store()
+10 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+11 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+ERROR - 2026-05-08 06:20:21 --> Unknown column 'poids_actuel' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 300.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(300): mysqli->query('UPDATE `utilisateurs` SET `taille_cm` = \'180\', `poids_actuel` = \'90\'
+WHERE `utilisateurs`.`id` IN (1)', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `utilisateurs` SET `taille_cm` = \'180\', `poids_actuel` = \'90\'
+WHERE `utilisateurs`.`id` IN (1)')
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `utilisateurs` SET `taille_cm` = \'180\', `poids_actuel` = \'90\'
+WHERE `utilisateurs`.`id` IN (1)')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `utilisateurs` SET `taille_cm` = :taille_cm:, `poids_actuel` = :poids_actuel:
+WHERE `utilisateurs`.`id` IN :utilisateurs.id:', [...], false)
+ 5 SYSTEMPATH/Model.php(406): CodeIgniter\Database\BaseBuilder->update()
+ 6 SYSTEMPATH/BaseModel.php(1074): CodeIgniter\Model->doUpdate([...], [...])
+ 7 SYSTEMPATH/Model.php(709): CodeIgniter\BaseModel->update([...], [...])
+ 8 APPPATH/Controllers/InscriptionController.php(94): CodeIgniter\Model->update(1, [...])
+ 9 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->finaliser()
+10 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+11 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 06:20:21 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'poids_actuel' in 'field list'
+[Method: POST, Route: inscription/finaliser]
+in SYSTEMPATH/Database/BaseConnection.php on line 865.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `utilisateurs` SET `taille_cm` = :taille_cm:, `poids_actuel` = :poids_actuel:
+WHERE `utilisateurs`.`id` IN :utilisateurs.id:', [...], false)
+ 2 SYSTEMPATH/Model.php(406): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH/BaseModel.php(1074): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH/Model.php(709): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH/Controllers/InscriptionController.php(94): CodeIgniter\Model->update(1, [...])
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->finaliser()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 06:20:21 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'poids_actuel' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 310.
+ 1 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `utilisateurs` SET `taille_cm` = \'180\', `poids_actuel` = \'90\'
+WHERE `utilisateurs`.`id` IN (1)')
+ 2 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `utilisateurs` SET `taille_cm` = \'180\', `poids_actuel` = \'90\'
+WHERE `utilisateurs`.`id` IN (1)')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `utilisateurs` SET `taille_cm` = :taille_cm:, `poids_actuel` = :poids_actuel:
+WHERE `utilisateurs`.`id` IN :utilisateurs.id:', [...], false)
+ 4 SYSTEMPATH/Model.php(406): CodeIgniter\Database\BaseBuilder->update()
+ 5 SYSTEMPATH/BaseModel.php(1074): CodeIgniter\Model->doUpdate([...], [...])
+ 6 SYSTEMPATH/Model.php(709): CodeIgniter\BaseModel->update([...], [...])
+ 7 APPPATH/Controllers/InscriptionController.php(94): CodeIgniter\Model->update(1, [...])
+ 8 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->finaliser()
+ 9 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+10 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 06:20:21 --> [Caused by] mysqli_sql_exception: Unknown column 'poids_actuel' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 300.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(300): mysqli->query('UPDATE `utilisateurs` SET `taille_cm` = \'180\', `poids_actuel` = \'90\'
+WHERE `utilisateurs`.`id` IN (1)', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `utilisateurs` SET `taille_cm` = \'180\', `poids_actuel` = \'90\'
+WHERE `utilisateurs`.`id` IN (1)')
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `utilisateurs` SET `taille_cm` = \'180\', `poids_actuel` = \'90\'
+WHERE `utilisateurs`.`id` IN (1)')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `utilisateurs` SET `taille_cm` = :taille_cm:, `poids_actuel` = :poids_actuel:
+WHERE `utilisateurs`.`id` IN :utilisateurs.id:', [...], false)
+ 5 SYSTEMPATH/Model.php(406): CodeIgniter\Database\BaseBuilder->update()
+ 6 SYSTEMPATH/BaseModel.php(1074): CodeIgniter\Model->doUpdate([...], [...])
+ 7 SYSTEMPATH/Model.php(709): CodeIgniter\BaseModel->update([...], [...])
+ 8 APPPATH/Controllers/InscriptionController.php(94): CodeIgniter\Model->update(1, [...])
+ 9 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->finaliser()
+10 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+11 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+ERROR - 2026-05-08 06:34:56 --> Unknown column 'poids_actuel' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 300.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(300): mysqli->query('UPDATE `utilisateurs` SET `taille_cm` = \'172\', `poids_actuel` = \'80\'
+WHERE `utilisateurs`.`id` IN (2)', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `utilisateurs` SET `taille_cm` = \'172\', `poids_actuel` = \'80\'
+WHERE `utilisateurs`.`id` IN (2)')
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `utilisateurs` SET `taille_cm` = \'172\', `poids_actuel` = \'80\'
+WHERE `utilisateurs`.`id` IN (2)')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `utilisateurs` SET `taille_cm` = :taille_cm:, `poids_actuel` = :poids_actuel:
+WHERE `utilisateurs`.`id` IN :utilisateurs.id:', [...], false)
+ 5 SYSTEMPATH/Model.php(406): CodeIgniter\Database\BaseBuilder->update()
+ 6 SYSTEMPATH/BaseModel.php(1074): CodeIgniter\Model->doUpdate([...], [...])
+ 7 SYSTEMPATH/Model.php(709): CodeIgniter\BaseModel->update([...], [...])
+ 8 APPPATH/Controllers/InscriptionController.php(94): CodeIgniter\Model->update(2, [...])
+ 9 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->finaliser()
+10 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+11 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 06:34:56 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'poids_actuel' in 'field list'
+[Method: POST, Route: inscription/finaliser]
+in SYSTEMPATH/Database/BaseConnection.php on line 865.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `utilisateurs` SET `taille_cm` = :taille_cm:, `poids_actuel` = :poids_actuel:
+WHERE `utilisateurs`.`id` IN :utilisateurs.id:', [...], false)
+ 2 SYSTEMPATH/Model.php(406): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH/BaseModel.php(1074): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH/Model.php(709): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH/Controllers/InscriptionController.php(94): CodeIgniter\Model->update(2, [...])
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->finaliser()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 06:34:56 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'poids_actuel' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 310.
+ 1 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `utilisateurs` SET `taille_cm` = \'172\', `poids_actuel` = \'80\'
+WHERE `utilisateurs`.`id` IN (2)')
+ 2 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `utilisateurs` SET `taille_cm` = \'172\', `poids_actuel` = \'80\'
+WHERE `utilisateurs`.`id` IN (2)')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `utilisateurs` SET `taille_cm` = :taille_cm:, `poids_actuel` = :poids_actuel:
+WHERE `utilisateurs`.`id` IN :utilisateurs.id:', [...], false)
+ 4 SYSTEMPATH/Model.php(406): CodeIgniter\Database\BaseBuilder->update()
+ 5 SYSTEMPATH/BaseModel.php(1074): CodeIgniter\Model->doUpdate([...], [...])
+ 6 SYSTEMPATH/Model.php(709): CodeIgniter\BaseModel->update([...], [...])
+ 7 APPPATH/Controllers/InscriptionController.php(94): CodeIgniter\Model->update(2, [...])
+ 8 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->finaliser()
+ 9 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+10 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 06:34:56 --> [Caused by] mysqli_sql_exception: Unknown column 'poids_actuel' in 'field list'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 300.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(300): mysqli->query('UPDATE `utilisateurs` SET `taille_cm` = \'172\', `poids_actuel` = \'80\'
+WHERE `utilisateurs`.`id` IN (2)', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `utilisateurs` SET `taille_cm` = \'172\', `poids_actuel` = \'80\'
+WHERE `utilisateurs`.`id` IN (2)')
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `utilisateurs` SET `taille_cm` = \'172\', `poids_actuel` = \'80\'
+WHERE `utilisateurs`.`id` IN (2)')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `utilisateurs` SET `taille_cm` = :taille_cm:, `poids_actuel` = :poids_actuel:
+WHERE `utilisateurs`.`id` IN :utilisateurs.id:', [...], false)
+ 5 SYSTEMPATH/Model.php(406): CodeIgniter\Database\BaseBuilder->update()
+ 6 SYSTEMPATH/BaseModel.php(1074): CodeIgniter\Model->doUpdate([...], [...])
+ 7 SYSTEMPATH/Model.php(709): CodeIgniter\BaseModel->update([...], [...])
+ 8 APPPATH/Controllers/InscriptionController.php(94): CodeIgniter\Model->update(2, [...])
+ 9 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->finaliser()
+10 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+11 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 06:37:04 --> ErrorException: Trying to access array offset on null
+[Method: POST, Route: inscription/finaliser]
+in APPPATH/Controllers/InscriptionController.php on line 99.
+ 1 APPPATH/Controllers/InscriptionController.php(99): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on null', '/Users/dylan/Documents/App/S4/SI/regime/app/Controllers/InscriptionController.php', 99)
+ 2 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->finaliser()
+ 3 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 07:38:42 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: profil/modifier]
+in SYSTEMPATH/BaseModel.php on line 1876.
+ 1 SYSTEMPATH/BaseModel.php(1876): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH/BaseModel.php(1043): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH/Model.php(709): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH/Controllers/InscriptionController.php(180): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->update()
+ 6 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 07:39:45 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: profil/modifier]
+in SYSTEMPATH/BaseModel.php on line 1876.
+ 1 SYSTEMPATH/BaseModel.php(1876): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH/BaseModel.php(1043): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH/Model.php(709): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH/Controllers/InscriptionController.php(180): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->update()
+ 6 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 07:40:40 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: profil/modifier]
+in SYSTEMPATH/BaseModel.php on line 1876.
+ 1 SYSTEMPATH/BaseModel.php(1876): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH/BaseModel.php(1043): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH/Model.php(709): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH/Controllers/InscriptionController.php(173): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->update()
+ 6 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 07:40:46 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: profil/modifier]
+in SYSTEMPATH/BaseModel.php on line 1876.
+ 1 SYSTEMPATH/BaseModel.php(1876): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH/BaseModel.php(1043): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH/Model.php(709): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH/Controllers/InscriptionController.php(173): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->update()
+ 6 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 07:52:42 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: profil/modifier]
+in SYSTEMPATH/BaseModel.php on line 1876.
+ 1 SYSTEMPATH/BaseModel.php(1876): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH/BaseModel.php(1043): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH/Model.php(709): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH/Controllers/InscriptionController.php(173): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->update()
+ 6 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 07:55:18 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: profil/modifier]
+in SYSTEMPATH/BaseModel.php on line 1876.
+ 1 SYSTEMPATH/BaseModel.php(1876): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH/BaseModel.php(1043): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH/Model.php(709): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH/Controllers/InscriptionController.php(173): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->update()
+ 6 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 08:11:59 --> ErrorException: Undefined variable $utilisateur
+[Method: GET, Route: form_profil]
+in APPPATH/Views/form_profil.php on line 25.
+ 1 APPPATH/Views/form_profil.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $utilisateur', '/Users/dylan/Documents/App/S4/SI/regime/app/Views/form_profil.php', 25)
+ 2 SYSTEMPATH/View/View.php(240): include('/Users/dylan/Documents/App/S4/SI/regime/app/Views/form_profil.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render('form_profil', [], true)
+ 5 APPPATH/Controllers/InscriptionController.php(193): view('form_profil')
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->form_profil()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 08:11:59 --> ErrorException: Undefined variable $utilisateur
+[Method: GET, Route: form_profil]
+in APPPATH/Views/form_profil.php on line 25.
+ 1 APPPATH/Views/form_profil.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $utilisateur', '/Users/dylan/Documents/App/S4/SI/regime/app/Views/form_profil.php', 25)
+ 2 SYSTEMPATH/View/View.php(240): include('/Users/dylan/Documents/App/S4/SI/regime/app/Views/form_profil.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render('form_profil', [], true)
+ 5 APPPATH/Controllers/InscriptionController.php(193): view('form_profil')
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->form_profil()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 08:11:59 --> ErrorException: Undefined variable $utilisateur
+[Method: GET, Route: form_profil]
+in APPPATH/Views/form_profil.php on line 25.
+ 1 APPPATH/Views/form_profil.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $utilisateur', '/Users/dylan/Documents/App/S4/SI/regime/app/Views/form_profil.php', 25)
+ 2 SYSTEMPATH/View/View.php(240): include('/Users/dylan/Documents/App/S4/SI/regime/app/Views/form_profil.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render('form_profil', [], true)
+ 5 APPPATH/Controllers/InscriptionController.php(193): view('form_profil')
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->form_profil()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 08:12:00 --> ErrorException: Undefined variable $utilisateur
+[Method: GET, Route: form_profil]
+in APPPATH/Views/form_profil.php on line 25.
+ 1 APPPATH/Views/form_profil.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $utilisateur', '/Users/dylan/Documents/App/S4/SI/regime/app/Views/form_profil.php', 25)
+ 2 SYSTEMPATH/View/View.php(240): include('/Users/dylan/Documents/App/S4/SI/regime/app/Views/form_profil.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render('form_profil', [], true)
+ 5 APPPATH/Controllers/InscriptionController.php(193): view('form_profil')
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->form_profil()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 08:12:00 --> ErrorException: Undefined variable $utilisateur
+[Method: GET, Route: form_profil]
+in APPPATH/Views/form_profil.php on line 25.
+ 1 APPPATH/Views/form_profil.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $utilisateur', '/Users/dylan/Documents/App/S4/SI/regime/app/Views/form_profil.php', 25)
+ 2 SYSTEMPATH/View/View.php(240): include('/Users/dylan/Documents/App/S4/SI/regime/app/Views/form_profil.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render('form_profil', [], true)
+ 5 APPPATH/Controllers/InscriptionController.php(193): view('form_profil')
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->form_profil()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 08:12:00 --> ErrorException: Undefined variable $utilisateur
+[Method: GET, Route: form_profil]
+in APPPATH/Views/form_profil.php on line 25.
+ 1 APPPATH/Views/form_profil.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $utilisateur', '/Users/dylan/Documents/App/S4/SI/regime/app/Views/form_profil.php', 25)
+ 2 SYSTEMPATH/View/View.php(240): include('/Users/dylan/Documents/App/S4/SI/regime/app/Views/form_profil.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render('form_profil', [], true)
+ 5 APPPATH/Controllers/InscriptionController.php(193): view('form_profil')
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->form_profil()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 08:13:17 --> ErrorException: Undefined variable $utilisateur
+[Method: GET, Route: form_profil]
+in APPPATH/Views/form_profil.php on line 25.
+ 1 APPPATH/Views/form_profil.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $utilisateur', '/Users/dylan/Documents/App/S4/SI/regime/app/Views/form_profil.php', 25)
+ 2 SYSTEMPATH/View/View.php(240): include('/Users/dylan/Documents/App/S4/SI/regime/app/Views/form_profil.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render('form_profil', [], true)
+ 5 APPPATH/Controllers/InscriptionController.php(193): view('form_profil')
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->form_profil()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 08:13:23 --> ErrorException: Undefined variable $utilisateur
+[Method: GET, Route: form_profil]
+in APPPATH/Views/form_profil.php on line 25.
+ 1 APPPATH/Views/form_profil.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $utilisateur', '/Users/dylan/Documents/App/S4/SI/regime/app/Views/form_profil.php', 25)
+ 2 SYSTEMPATH/View/View.php(240): include('/Users/dylan/Documents/App/S4/SI/regime/app/Views/form_profil.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render('form_profil', [], true)
+ 5 APPPATH/Controllers/InscriptionController.php(193): view('form_profil')
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->form_profil()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 08:14:49 --> ErrorException: Undefined variable $utilisateur
+[Method: GET, Route: form_profil]
+in APPPATH/Views/form_profil.php on line 18.
+ 1 APPPATH/Views/form_profil.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $utilisateur', '/Users/dylan/Documents/App/S4/SI/regime/app/Views/form_profil.php', 18)
+ 2 SYSTEMPATH/View/View.php(240): include('/Users/dylan/Documents/App/S4/SI/regime/app/Views/form_profil.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render('form_profil', [], true)
+ 5 APPPATH/Controllers/InscriptionController.php(193): view('form_profil')
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->form_profil()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 08:15:18 --> ErrorException: Undefined variable $utilisateur
+[Method: GET, Route: form_profil]
+in APPPATH/Views/form_profil.php on line 14.
+ 1 APPPATH/Views/form_profil.php(14): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $utilisateur', '/Users/dylan/Documents/App/S4/SI/regime/app/Views/form_profil.php', 14)
+ 2 SYSTEMPATH/View/View.php(240): include('/Users/dylan/Documents/App/S4/SI/regime/app/Views/form_profil.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render('form_profil', [], true)
+ 5 APPPATH/Controllers/InscriptionController.php(193): view('form_profil')
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->form_profil()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InscriptionController))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/dylan/Documents/App/S4/SI/regime/public/index.php')
+CRITICAL - 2026-05-08 10:18:38 --> CodeIgniter\Cache\Exceptions\CacheException: Cache unable to write to "/home/itu/regime/writable/cache/".
+[Method: GET, Route: /]
+in SYSTEMPATH/Cache/Handlers/FileHandler.php on line 66.
+ 1 SYSTEMPATH/Cache/Handlers/FileHandler.php(66): CodeIgniter\Cache\Exceptions\CacheException::forUnableToWrite()
+ 2 SYSTEMPATH/Cache/CacheFactory.php(67): CodeIgniter\Cache\Handlers\FileHandler->__construct()
+ 3 SYSTEMPATH/Config/Services.php(129): CodeIgniter\Cache\CacheFactory::getHandler()
+ 4 SYSTEMPATH/Config/BaseService.php(325): CodeIgniter\Config\Services::cache()
+ 5 SYSTEMPATH/Config/BaseService.php(264): CodeIgniter\Config\BaseService::__callStatic()
+ 6 SYSTEMPATH/Config/Services.php(124): CodeIgniter\Config\BaseService::getSharedInstance()
+ 7 SYSTEMPATH/Config/BaseService.php(334): CodeIgniter\Config\Services::cache()
+ 8 SYSTEMPATH/Config/BaseService.php(203): CodeIgniter\Config\BaseService::__callStatic()
+ 9 SYSTEMPATH/Config/Services.php(454): CodeIgniter\Config\BaseService::get()
+10 SYSTEMPATH/Config/BaseService.php(325): CodeIgniter\Config\Services::responsecache()
+11 SYSTEMPATH/Config/BaseService.php(264): CodeIgniter\Config\BaseService::__callStatic()
+12 SYSTEMPATH/Config/Services.php(450): CodeIgniter\Config\BaseService::getSharedInstance()
+13 SYSTEMPATH/Config/BaseService.php(334): CodeIgniter\Config\Services::responsecache()
+14 SYSTEMPATH/CodeIgniter.php(178): CodeIgniter\Config\BaseService::__callStatic()
+15 SYSTEMPATH/Config/Services.php(164): CodeIgniter\CodeIgniter->__construct()
+16 SYSTEMPATH/Config/BaseService.php(325): CodeIgniter\Config\Services::codeigniter()
+17 SYSTEMPATH/Config/BaseService.php(264): CodeIgniter\Config\BaseService::__callStatic()
+18 SYSTEMPATH/Config/Services.php(159): CodeIgniter\Config\BaseService::getSharedInstance()
+19 SYSTEMPATH/Config/BaseService.php(334): CodeIgniter\Config\Services::codeigniter()
+20 SYSTEMPATH/Config/BaseService.php(203): CodeIgniter\Config\BaseService::__callStatic()
+21 SYSTEMPATH/Common.php(1078): CodeIgniter\Config\BaseService::get()
+22 SYSTEMPATH/Boot.php(403): service()
+23 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::initializeCodeIgniter()
+24 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 10:19:58 --> CodeIgniter\Cache\Exceptions\CacheException: Cache unable to write to "/home/itu/regime/writable/cache/".
+[Method: GET, Route: /]
+in SYSTEMPATH/Cache/Handlers/FileHandler.php on line 66.
+ 1 SYSTEMPATH/Cache/Handlers/FileHandler.php(66): CodeIgniter\Cache\Exceptions\CacheException::forUnableToWrite()
+ 2 SYSTEMPATH/Cache/CacheFactory.php(67): CodeIgniter\Cache\Handlers\FileHandler->__construct()
+ 3 SYSTEMPATH/Config/Services.php(129): CodeIgniter\Cache\CacheFactory::getHandler()
+ 4 SYSTEMPATH/Config/BaseService.php(325): CodeIgniter\Config\Services::cache()
+ 5 SYSTEMPATH/Config/BaseService.php(264): CodeIgniter\Config\BaseService::__callStatic()
+ 6 SYSTEMPATH/Config/Services.php(124): CodeIgniter\Config\BaseService::getSharedInstance()
+ 7 SYSTEMPATH/Config/BaseService.php(334): CodeIgniter\Config\Services::cache()
+ 8 SYSTEMPATH/Config/BaseService.php(203): CodeIgniter\Config\BaseService::__callStatic()
+ 9 SYSTEMPATH/Config/Services.php(454): CodeIgniter\Config\BaseService::get()
+10 SYSTEMPATH/Config/BaseService.php(325): CodeIgniter\Config\Services::responsecache()
+11 SYSTEMPATH/Config/BaseService.php(264): CodeIgniter\Config\BaseService::__callStatic()
+12 SYSTEMPATH/Config/Services.php(450): CodeIgniter\Config\BaseService::getSharedInstance()
+13 SYSTEMPATH/Config/BaseService.php(334): CodeIgniter\Config\Services::responsecache()
+14 SYSTEMPATH/CodeIgniter.php(178): CodeIgniter\Config\BaseService::__callStatic()
+15 SYSTEMPATH/Config/Services.php(164): CodeIgniter\CodeIgniter->__construct()
+16 SYSTEMPATH/Config/BaseService.php(325): CodeIgniter\Config\Services::codeigniter()
+17 SYSTEMPATH/Config/BaseService.php(264): CodeIgniter\Config\BaseService::__callStatic()
+18 SYSTEMPATH/Config/Services.php(159): CodeIgniter\Config\BaseService::getSharedInstance()
+19 SYSTEMPATH/Config/BaseService.php(334): CodeIgniter\Config\Services::codeigniter()
+20 SYSTEMPATH/Config/BaseService.php(203): CodeIgniter\Config\BaseService::__callStatic()
+21 SYSTEMPATH/Common.php(1078): CodeIgniter\Config\BaseService::get()
+22 SYSTEMPATH/Boot.php(403): service()
+23 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::initializeCodeIgniter()
+24 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 10:19:59 --> CodeIgniter\Cache\Exceptions\CacheException: Cache unable to write to "/home/itu/regime/writable/cache/".
+[Method: GET, Route: /]
+in SYSTEMPATH/Cache/Handlers/FileHandler.php on line 66.
+ 1 SYSTEMPATH/Cache/Handlers/FileHandler.php(66): CodeIgniter\Cache\Exceptions\CacheException::forUnableToWrite()
+ 2 SYSTEMPATH/Cache/CacheFactory.php(67): CodeIgniter\Cache\Handlers\FileHandler->__construct()
+ 3 SYSTEMPATH/Config/Services.php(129): CodeIgniter\Cache\CacheFactory::getHandler()
+ 4 SYSTEMPATH/Config/BaseService.php(325): CodeIgniter\Config\Services::cache()
+ 5 SYSTEMPATH/Config/BaseService.php(264): CodeIgniter\Config\BaseService::__callStatic()
+ 6 SYSTEMPATH/Config/Services.php(124): CodeIgniter\Config\BaseService::getSharedInstance()
+ 7 SYSTEMPATH/Config/BaseService.php(334): CodeIgniter\Config\Services::cache()
+ 8 SYSTEMPATH/Config/BaseService.php(203): CodeIgniter\Config\BaseService::__callStatic()
+ 9 SYSTEMPATH/Config/Services.php(454): CodeIgniter\Config\BaseService::get()
+10 SYSTEMPATH/Config/BaseService.php(325): CodeIgniter\Config\Services::responsecache()
+11 SYSTEMPATH/Config/BaseService.php(264): CodeIgniter\Config\BaseService::__callStatic()
+12 SYSTEMPATH/Config/Services.php(450): CodeIgniter\Config\BaseService::getSharedInstance()
+13 SYSTEMPATH/Config/BaseService.php(334): CodeIgniter\Config\Services::responsecache()
+14 SYSTEMPATH/CodeIgniter.php(178): CodeIgniter\Config\BaseService::__callStatic()
+15 SYSTEMPATH/Config/Services.php(164): CodeIgniter\CodeIgniter->__construct()
+16 SYSTEMPATH/Config/BaseService.php(325): CodeIgniter\Config\Services::codeigniter()
+17 SYSTEMPATH/Config/BaseService.php(264): CodeIgniter\Config\BaseService::__callStatic()
+18 SYSTEMPATH/Config/Services.php(159): CodeIgniter\Config\BaseService::getSharedInstance()
+19 SYSTEMPATH/Config/BaseService.php(334): CodeIgniter\Config\Services::codeigniter()
+20 SYSTEMPATH/Config/BaseService.php(203): CodeIgniter\Config\BaseService::__callStatic()
+21 SYSTEMPATH/Common.php(1078): CodeIgniter\Config\BaseService::get()
+22 SYSTEMPATH/Boot.php(403): service()
+23 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::initializeCodeIgniter()
+24 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 10:20:16 --> CodeIgniter\Cache\Exceptions\CacheException: Cache unable to write to "/home/itu/regime/writable/cache/".
+[Method: GET, Route: /]
+in SYSTEMPATH/Cache/Handlers/FileHandler.php on line 66.
+ 1 SYSTEMPATH/Cache/Handlers/FileHandler.php(66): CodeIgniter\Cache\Exceptions\CacheException::forUnableToWrite()
+ 2 SYSTEMPATH/Cache/CacheFactory.php(67): CodeIgniter\Cache\Handlers\FileHandler->__construct()
+ 3 SYSTEMPATH/Config/Services.php(129): CodeIgniter\Cache\CacheFactory::getHandler()
+ 4 SYSTEMPATH/Config/BaseService.php(325): CodeIgniter\Config\Services::cache()
+ 5 SYSTEMPATH/Config/BaseService.php(264): CodeIgniter\Config\BaseService::__callStatic()
+ 6 SYSTEMPATH/Config/Services.php(124): CodeIgniter\Config\BaseService::getSharedInstance()
+ 7 SYSTEMPATH/Config/BaseService.php(334): CodeIgniter\Config\Services::cache()
+ 8 SYSTEMPATH/Config/BaseService.php(203): CodeIgniter\Config\BaseService::__callStatic()
+ 9 SYSTEMPATH/Config/Services.php(454): CodeIgniter\Config\BaseService::get()
+10 SYSTEMPATH/Config/BaseService.php(325): CodeIgniter\Config\Services::responsecache()
+11 SYSTEMPATH/Config/BaseService.php(264): CodeIgniter\Config\BaseService::__callStatic()
+12 SYSTEMPATH/Config/Services.php(450): CodeIgniter\Config\BaseService::getSharedInstance()
+13 SYSTEMPATH/Config/BaseService.php(334): CodeIgniter\Config\Services::responsecache()
+14 SYSTEMPATH/CodeIgniter.php(178): CodeIgniter\Config\BaseService::__callStatic()
+15 SYSTEMPATH/Config/Services.php(164): CodeIgniter\CodeIgniter->__construct()
+16 SYSTEMPATH/Config/BaseService.php(325): CodeIgniter\Config\Services::codeigniter()
+17 SYSTEMPATH/Config/BaseService.php(264): CodeIgniter\Config\BaseService::__callStatic()
+18 SYSTEMPATH/Config/Services.php(159): CodeIgniter\Config\BaseService::getSharedInstance()
+19 SYSTEMPATH/Config/BaseService.php(334): CodeIgniter\Config\Services::codeigniter()
+20 SYSTEMPATH/Config/BaseService.php(203): CodeIgniter\Config\BaseService::__callStatic()
+21 SYSTEMPATH/Common.php(1078): CodeIgniter\Config\BaseService::get()
+22 SYSTEMPATH/Boot.php(403): service()
+23 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::initializeCodeIgniter()
+24 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ERROR - 2026-05-08 10:26:40 --> Table 'projet_diet_s4.utilisateurs' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 300.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(300): mysqli->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 5 SYSTEMPATH/Validation/Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/Validation/StrictRules/Rules.php(187): CodeIgniter\Validation\Rules->is_unique()
+ 7 SYSTEMPATH/Validation/Validation.php(345): CodeIgniter\Validation\StrictRules\Rules->is_unique()
+ 8 SYSTEMPATH/Validation/Validation.php(210): CodeIgniter\Validation\Validation->processRules()
+ 9 SYSTEMPATH/BaseModel.php(1615): CodeIgniter\Validation\Validation->run()
+10 APPPATH/Controllers/InscriptionController.php(34): CodeIgniter\BaseModel->validate()
+11 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->store()
+12 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+13 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+14 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+16 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 10:26:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projet_diet_s4.utilisateurs' doesn't exist
+[Method: POST, Route: inscription/store]
+in SYSTEMPATH/Database/BaseConnection.php on line 865.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH/Validation/Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/Validation/StrictRules/Rules.php(187): CodeIgniter\Validation\Rules->is_unique()
+ 4 SYSTEMPATH/Validation/Validation.php(345): CodeIgniter\Validation\StrictRules\Rules->is_unique()
+ 5 SYSTEMPATH/Validation/Validation.php(210): CodeIgniter\Validation\Validation->processRules()
+ 6 SYSTEMPATH/BaseModel.php(1615): CodeIgniter\Validation\Validation->run()
+ 7 APPPATH/Controllers/InscriptionController.php(34): CodeIgniter\BaseModel->validate()
+ 8 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->store()
+ 9 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 10:26:40 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projet_diet_s4.utilisateurs' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 310.
+ 1 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute()
+ 2 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Validation/Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/Validation/StrictRules/Rules.php(187): CodeIgniter\Validation\Rules->is_unique()
+ 6 SYSTEMPATH/Validation/Validation.php(345): CodeIgniter\Validation\StrictRules\Rules->is_unique()
+ 7 SYSTEMPATH/Validation/Validation.php(210): CodeIgniter\Validation\Validation->processRules()
+ 8 SYSTEMPATH/BaseModel.php(1615): CodeIgniter\Validation\Validation->run()
+ 9 APPPATH/Controllers/InscriptionController.php(34): CodeIgniter\BaseModel->validate()
+10 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->store()
+11 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 10:26:40 --> [Caused by] mysqli_sql_exception: Table 'projet_diet_s4.utilisateurs' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 300.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(300): mysqli->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 5 SYSTEMPATH/Validation/Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/Validation/StrictRules/Rules.php(187): CodeIgniter\Validation\Rules->is_unique()
+ 7 SYSTEMPATH/Validation/Validation.php(345): CodeIgniter\Validation\StrictRules\Rules->is_unique()
+ 8 SYSTEMPATH/Validation/Validation.php(210): CodeIgniter\Validation\Validation->processRules()
+ 9 SYSTEMPATH/BaseModel.php(1615): CodeIgniter\Validation\Validation->run()
+10 APPPATH/Controllers/InscriptionController.php(34): CodeIgniter\BaseModel->validate()
+11 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\InscriptionController->store()
+12 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+13 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+14 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+16 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-08 17:47:15 --> CodeIgniter\Cache\Exceptions\CacheException: Cache unable to write to "/home/tsiky/Documents/regime/writable/cache/".
+[Method: GET, Route: /]
+in SYSTEMPATH/Cache/Handlers/FileHandler.php on line 66.
+ 1 SYSTEMPATH/Cache/Handlers/FileHandler.php(66): CodeIgniter\Cache\Exceptions\CacheException::forUnableToWrite()
+ 2 SYSTEMPATH/Cache/CacheFactory.php(67): CodeIgniter\Cache\Handlers\FileHandler->__construct()
+ 3 SYSTEMPATH/Config/Services.php(129): CodeIgniter\Cache\CacheFactory::getHandler()
+ 4 SYSTEMPATH/Config/BaseService.php(325): CodeIgniter\Config\Services::cache()
+ 5 SYSTEMPATH/Config/BaseService.php(264): CodeIgniter\Config\BaseService::__callStatic()
+ 6 SYSTEMPATH/Config/Services.php(124): CodeIgniter\Config\BaseService::getSharedInstance()
+ 7 SYSTEMPATH/Config/BaseService.php(334): CodeIgniter\Config\Services::cache()
+ 8 SYSTEMPATH/Config/BaseService.php(203): CodeIgniter\Config\BaseService::__callStatic()
+ 9 SYSTEMPATH/Config/Services.php(454): CodeIgniter\Config\BaseService::get()
+10 SYSTEMPATH/Config/BaseService.php(325): CodeIgniter\Config\Services::responsecache()
+11 SYSTEMPATH/Config/BaseService.php(264): CodeIgniter\Config\BaseService::__callStatic()
+12 SYSTEMPATH/Config/Services.php(450): CodeIgniter\Config\BaseService::getSharedInstance()
+13 SYSTEMPATH/Config/BaseService.php(334): CodeIgniter\Config\Services::responsecache()
+14 SYSTEMPATH/CodeIgniter.php(178): CodeIgniter\Config\BaseService::__callStatic()
+15 SYSTEMPATH/Config/Services.php(164): CodeIgniter\CodeIgniter->__construct()
+16 SYSTEMPATH/Config/BaseService.php(325): CodeIgniter\Config\Services::codeigniter()
+17 SYSTEMPATH/Config/BaseService.php(264): CodeIgniter\Config\BaseService::__callStatic()
+18 SYSTEMPATH/Config/Services.php(159): CodeIgniter\Config\BaseService::getSharedInstance()
+19 SYSTEMPATH/Config/BaseService.php(334): CodeIgniter\Config\Services::codeigniter()
+20 SYSTEMPATH/Config/BaseService.php(203): CodeIgniter\Config\BaseService::__callStatic()
+21 SYSTEMPATH/Common.php(1078): CodeIgniter\Config\BaseService::get()
+22 SYSTEMPATH/Boot.php(403): service()
+23 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::initializeCodeIgniter()
+24 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()

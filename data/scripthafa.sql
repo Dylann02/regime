@@ -7,7 +7,7 @@ CREATE DATABASE IF NOT EXISTS projet_s4
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
-USE projet_s4;n   
+USE projet_s4;
 
 -- ------------------------------------------------------------
 -- TABLE : utilisateurs

@@ -2,48 +2,70 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier profil</title>
 </head>
 <body>
-    <h2>Modifier profil</h2>
+    <div class="container">
+        <h2>Modifier profil</h2>
 
-    <?php if (isset($validation)): ?>
-        <div style="color:red;">
-            <?= $validation->listErrors() ?>
-        </div>
-    <?php endif; ?>
+        <?php if (isset($erreurs) && is_array($erreurs) && count($erreurs) > 0): ?>
+            <div class="error">
+                <?php foreach ($erreurs as $field => $message): ?>
+                    <p><?= esc($message) ?></p>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
 
-    <form action="<?= base_url('profil/modifier') ?>" method="post">
-        <?= csrf_field() ?>
+        <form action="<?= base_url('profil/modifier') ?>" method="post">
+            <?= csrf_field() ?>
 
-        <input type="hidden" name="id" value="<?= esc($utilisateur['id']) ?>">
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom" value="<?= esc($utilisateur['nom']) ?>" required>
+            </div>
 
-        <label>Nom</label><br>
-        <input type="text" name="nom" value="<?= esc($utilisateur['nom']) ?>"><br><br>
+            <div class="form-group">
+                <label for="prenom">Prénom</label>
+                <input type="text" id="prenom" name="prenom" value="<?= esc($utilisateur['prenom']) ?>" required>
+            </div>
 
-        <label>Prénom</label><br>
-        <input type="text" name="prenom" value="<?= esc($utilisateur['prenom']) ?>"><br><br>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="<?= esc($utilisateur['email']) ?>" required>
+            </div>
 
-        <label>Email</label><br>
-        <input type="email" name="email" value="<?= esc($utilisateur['email']) ?>"><br><br>
+            <div class="form-group">
+                <label for="genre">Genre</label>
+                <select id="genre" name="genre" required>
+                    <option value="homme" <?= $utilisateur['genre'] === 'homme' ? 'selected' : '' ?>>Homme</option>
+                    <option value="femme" <?= $utilisateur['genre'] === 'femme' ? 'selected' : '' ?>>Femme</option>
+                    <option value="autre" <?= $utilisateur['genre'] === 'autre' ? 'selected' : '' ?>>Autre</option>
+                </select>
+            </div>
 
-        <label>Genre</label><br>
-        <select name="genre">
-            <option value="homme" <?= $utilisateur['genre'] === 'homme' ? 'selected' : '' ?>>Homme</option>
-            <option value="femme" <?= $utilisateur['genre'] === 'femme' ? 'selected' : '' ?>>Femme</option>
-            <option value="autre" <?= $utilisateur['genre'] === 'autre' ? 'selected' : '' ?>>Autre</option>
-        </select><br><br>
+            <div class="form-group">
+                <label for="date_naissance">Date de naissance</label>
+                <input type="date" id="date_naissance" name="date_naissance" value="<?= esc($utilisateur['date_naissance']) ?>" required>
+            </div>
 
-        <label>Date de naissance</label><br>
-        <input type="date" name="date_naissance" value="<?= esc($utilisateur['date_naissance']) ?>"><br><br>
+            <div class="form-group">
+                <label for="taille_cm">Taille (cm)</label>
+                <input type="number" id="taille_cm" step="0.01" name="taille_cm" value="<?= esc($utilisateur['taille_cm']) ?>" required>
+            </div>
 
-        <label>Taille (cm)</label><br>
-        <input type="number" step="0.01" name="taille_cm" value="<?= esc($utilisateur['taille_cm']) ?>"><br><br>
+            <div class="form-group">
+                <label for="poids_actuel">Poids (kg)</label>
+                <input type="number" id="poids_actuel" step="0.01" name="poids_actuel" value="<?= esc($utilisateur['poids_actuel']) ?>" required>
+            </div>
 
-        <label>Poids (kg)</label><br>
-        <input type="number" step="0.01" name="poids_actuel" value="<?= esc($utilisateur['poids_actuel']) ?>"><br><br>
-
-        <button type="submit">Enregistrer</button>
-    </form>
+            <div class="button-group">
+                <button type="submit">Enregistrer</button>
+                <a href="<?= base_url('profil') ?>">
+                    <button type="button" class="cancel-btn">Annuler</button>
+                </a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

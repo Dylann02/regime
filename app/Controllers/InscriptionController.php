@@ -15,39 +15,51 @@ class InscriptionController extends BaseController
     {
         $model = new UtilisateurModel();
 
-        $rules = [
-            'nom' => 'required|min_length[2]',
-            'prenom' => 'required|min_length[2]',
-            'email' => 'required|valid_email',
-            'mot_de_passe' => 'required|min_length[6]',
-            'genre' => 'required|in_list[homme,femme,autre]',
-            'date_naissance' => 'required|valid_date'
+        $nom = $this->request->getPost('nom');
+        $prenom = $this->request->getPost('prenom');
+        $email = $this->request->getPost('email');
+        $motDePasseRaw = $this->request->getPost('mot_de_passe');
+        $genre = $this->request->getPost('genre');
+        $dateNaissance = $this->request->getPost('date_naissance');
+
+        $dataValidation = [
+            'nom' => $nom,
+            'prenom' => $prenom,
+            'email' => $email,
+            'mot_de_passe' => $motDePasseRaw,
+            'genre' => $genre,
+            'date_naissance' => $dateNaissance,
         ];
 
-        if (! $this->validate($rules)) {
+        if (! $model->validate($dataValidation)) {
             return view('inscription', [
-                'validation' => $this->validator
+                'erreurs' => $model->errors()
             ]);
         }
 
         $data = [
-            'nom' => $this->request->getPost('nom'),
-            'prenom' => $this->request->getPost('prenom'),
-            'email' => $this->request->getPost('email'),
-            'mot_de_passe' => password_hash($this->request->getPost('mot_de_passe'), PASSWORD_DEFAULT),
-            'genre' => $this->request->getPost('genre'),
-            'date_naissance' => $this->request->getPost('date_naissance'),
+            'nom' => $nom,
+            'prenom' => $prenom,
+            'email' => $email,
+            'mot_de_passe' => password_hash($motDePasseRaw, PASSWORD_DEFAULT),
+            'genre' => $genre,
+            'date_naissance' => $dateNaissance,
         ];
 
         $model->insert($data);
         $userId = $model->insertID();
 
-        return redirect()->to('/inscription/etape2?id=' . $userId);
+        session()->set('user_id', $userId);
+
+        return redirect()->to('/inscription/etape2');
     }
 
     public function etape2()
     {
-        $userId = $this->request->getGet('id');
+        $userId = session()->get('user_id');
+        if (! $userId) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Utilisateur non spécifié');
+        }
 
         return view('inscription_etape2', [
             'userId' => $userId
@@ -57,33 +69,33 @@ class InscriptionController extends BaseController
     public function finaliser()
     {
         $model = new UtilisateurModel();
-        $userId = $this->request->getPost('user_id');
+        $userId = session()->get('user_id');
+        if (! $userId) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Utilisateur non spécifié');
+        }
 
-        $rules = [
-            'taille_cm' => 'required|numeric',
-            'poids_actuel' => 'required|numeric'
+        $data = [
+            'taille_cm' => $this->request->getPost('taille_cm'),
+            'poids_actuel' => $this->request->getPost('poids_actuel'),
         ];
 
-        if (! $this->validate($rules)) {
+        if (! $model->validate($data, 'validationRulesEtape2')) {
             return view('inscription_etape2', [
-                'validation' => $this->validator,
+                'erreurs' => $model->errors(),
                 'userId' => $userId
             ]);
         }
 
-        $model->update($userId, [
-            'taille_cm' => $this->request->getPost('taille_cm'),
-            'poids_actuel' => $this->request->getPost('poids_actuel'),
-        ]);
-
-        return redirect()->to('/profil?id=' . $userId);
+        $model->update($userId, $data);
+        
+        return redirect()->to('/inscription/choix_objectif');
     }
 
-    public function profil()
+    public function choixObjectif()
     {
-        $userId = $this->request->getGet('id');
+        $userId = session()->get('user_id');
         if (! $userId) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Utilisateur non spécifié');
+            return redirect()->to('/login');
         }
 
         $model = new UtilisateurModel();
@@ -93,20 +105,72 @@ class InscriptionController extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Utilisateur introuvable');
         }
 
+        return view('choix_objectif', [
+            'utilisateur' => $utilisateur,
+            'imc' => $model->getIMC($userId),
+            'poidsIdeal' => $model->getPoidsIdeal($userId)
+        ]);
+    }
+
+    public function saveObjectif()
+    {
+        $userId = session()->get('user_id');
+        if (! $userId) {
+            return redirect()->to('/login');
+        }
+
+        $model = new UtilisateurModel();
+        
+        $objectif_actuel = $this->request->getPost('objectif_actuel');
+        $valeur_objectif = $this->request->getPost('valeur_objectif');
+        
+        $model->update($userId, [
+            'objectif_actuel' => $objectif_actuel,
+            'valeur_objectif' => $valeur_objectif
+        ]);
+        
+        $utilisateur = $model->find($userId);
+        session()->set('user', [
+            'id' => $utilisateur['id'],
+            'nom' => $utilisateur['nom'],
+            'prenom' => $utilisateur['prenom'],
+            'email' => $utilisateur['email']
+        ]);
+        session()->remove('user_id');
+
+        return redirect()->to('/profil');
+    }
+
+    public function profil()
+    {
+        $user = session()->get('user');
+        if (! $user || ! isset($user['id'])) {
+            return redirect()->to('/login');
+        }
+
+        $model = new UtilisateurModel();
+        $utilisateur = $model->find($user['id']);
+        $imc = $model->getIMC($user['id']);
+
+        if (! $utilisateur) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Utilisateur introuvable');
+        }
+
         return view('profil', [
-            'utilisateur' => $utilisateur
+            'utilisateur' => $utilisateur,
+            'imc' => $imc
         ]);
     }
 
     public function edit()
     {
-        $userId = $this->request->getGet('id');
-        if (! $userId) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Utilisateur non spécifié');
+        $user = session()->get('user');
+        if (! $user || ! isset($user['id'])) {
+            return redirect()->to('/login');
         }
 
         $model = new UtilisateurModel();
-        $utilisateur = $model->find($userId);
+        $utilisateur = $model->find($user['id']);
 
         if (! $utilisateur) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Utilisateur introuvable');
@@ -119,36 +183,20 @@ class InscriptionController extends BaseController
 
     public function update()
     {
-        $model = new UtilisateurModel();
-        $userId = $this->request->getPost('id');
-
-        if (! $userId) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Utilisateur non spécifié');
+        $user = session()->get('user');
+        if (! $user || ! isset($user['id'])) {
+            return redirect()->to('/login');
         }
+
+        $model = new UtilisateurModel();
+        $userId = $user['id'];
 
         $utilisateur = $model->find($userId);
         if (! $utilisateur) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Utilisateur introuvable');
         }
 
-        $rules = [
-            'nom' => 'required|min_length[2]',
-            'prenom' => 'required|min_length[2]',
-            'email' => 'required|valid_email',
-            'genre' => 'required|in_list[homme,femme,autre]',
-            'date_naissance' => 'required|valid_date',
-            'taille_cm' => 'required|numeric',
-            'poids_actuel' => 'required|numeric'
-        ];
-
-        if (! $this->validate($rules)) {
-            return view('modifier_profil', [
-                'validation' => $this->validator,
-                'utilisateur' => $utilisateur
-            ]);
-        }
-
-        $model->update($userId, [
+        $data = [
             'nom' => $this->request->getPost('nom'),
             'prenom' => $this->request->getPost('prenom'),
             'email' => $this->request->getPost('email'),
@@ -156,8 +204,22 @@ class InscriptionController extends BaseController
             'date_naissance' => $this->request->getPost('date_naissance'),
             'taille_cm' => $this->request->getPost('taille_cm'),
             'poids_actuel' => $this->request->getPost('poids_actuel'),
+        ];
+
+        $model->set($data)->where('id', $userId)->update();
+        
+        $utilisateurMisAjour = $model->find($userId);
+        if (! $utilisateurMisAjour) {
+            return redirect()->to('/profil')->with('error', 'Erreur lors de la récupération des données');
+        }
+        
+        session()->set('user', [
+            'id' => $userId,
+            'nom' => $utilisateurMisAjour['nom'],
+            'prenom' => $utilisateurMisAjour['prenom'],
+            'email' => $utilisateurMisAjour['email']
         ]);
 
-        return redirect()->to('/profil?id=' . $userId)->with('message', 'Profil mis à jour avec succès');
+        return redirect()->to('/profil')->with('message', 'Profil mis à jour avec succès');
     }
 }
