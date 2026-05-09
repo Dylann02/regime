@@ -3,6 +3,11 @@
 use CodeIgniter\Boot;
 use Config\Paths;
 
+// AJOUT POUR AFFICHER TOUTES LES ERREURS PHP
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+
 /*
  *---------------------------------------------------------------
  * CHECK PHP VERSION
