@@ -1,5 +1,4 @@
 
-
 CREATE DATABASE IF NOT EXISTS projet_diet_s4 
     CHARACTER SET utf8mb4 
     COLLATE utf8mb4_unicode_ci;
