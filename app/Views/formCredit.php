@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
-</head>
-<body>
-    <div class="header">
-        <h1>💳 Ajouter du crédit</h1>
-        <div>
-            <a href="<?= base_url('profil') ?>" class="header-link" style="color: white; text-decoration: none; margin-left: 1rem;">← Retour</a>
-        </div>
-    </div>
+<?php $title = 'Ajouter du crédit' ?>
+<?= $this->extend('modele') ?>
+<?= $this->section('content') ?>
 
     <div class="container" style="max-width: 600px;">
         <?php if (session()->getFlashdata('error')): ?>
@@ -41,11 +29,11 @@
                 </div>
 
                 <div class="actions">
-                    <button type="submit" class="btn">Recharger le crédit</button>
-                    <a href="<?= base_url('profil') ?>" class="btn secondary" style="text-decoration: none; text-align: center;">Annuler</a>
+                    <button type="submit" class="btn btn-primary">Recharger le crédit</button>
+                    <a href="<?= base_url('profil') ?>" class="btn btn-secondary" style="text-decoration: none; text-align: center;">Annuler</a>
                 </div>
             </form>
         </div>
     </div>
-</body>
-</html>
+
+<?= $this->endSection() ?>

@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier profil</title>
-    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
-</head>
-<body>
+<?php $title = 'Modifier profil' ?>
+<?= $this->extend('modele') ?>
+<?= $this->section('content') ?>
+
     <?php
         $utilisateur = $utilisateur ?? [];
         $erreurs = $erreurs ?? [];
@@ -14,13 +9,6 @@
         $objectifActuel = old('objectif_actuel', $utilisateur['objectif_actuel'] ?? '');
         $valeurObjectif = old('valeur_objectif', $utilisateur['valeur_objectif'] ?? '');
     ?>
-    <div class="header">
-        <h1>✏️ Modifier Profil</h1>
-        <div>
-            <a href="<?= base_url('profil') ?>" class="header-link" style="color: white; text-decoration: none; margin-left: 1rem;">← Retour au profil</a>
-        </div>
-    </div>
-
     <div class="container" style="max-width: 700px;">
         <?php if (isset($erreurs) && is_array($erreurs) && count($erreurs) > 0): ?>
             <div class="message error">
@@ -97,8 +85,8 @@
                 </div>
 
                 <div class="actions" style="margin-top: 2rem;">
-                    <button type="submit" class="btn">💾 Enregistrer les modifications</button>
-                    <a href="<?= base_url('profil') ?>" class="btn secondary" style="text-decoration: none; text-align: center;">Annuler</a>
+                    <button type="submit" class="btn btn-primary">💾 Enregistrer les modifications</button>
+                    <a href="<?= base_url('profil') ?>" class="btn btn-secondary" style="text-decoration: none; text-align: center;">Annuler</a>
                 </div>
             </form>
         </div>
@@ -143,5 +131,4 @@
             changerObjectif();
         });
     </script>
-</body>
-</html>
+<?= $this->endSection() ?>

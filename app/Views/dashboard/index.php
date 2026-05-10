@@ -1,78 +1,55 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tableau de Bord - Statistiques</title>
-    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
-</head>
-<body>
-    <div class="layout">
-        <aside class="sidebar">
-            <div class="brand">⚙️ Admin</div>
-            <nav class="sidebar-nav">
-                <a class="active" href="<?= base_url('dashboard') ?>">Tableau de bord</a>
-                <a href="<?= base_url('admin/regimes') ?>">Régimes</a>
-                <a href="<?= base_url('admin/activites') ?>">Activités sportives</a>
-                <a href="<?= base_url('admin/parametres') ?>">Paramètres</a>
-                <a href="<?= base_url('logout') ?>">Déconnexion</a>
-            </nav>
-        </aside>
+<?php $title = 'Tableau de Bord' ?>
+<?= $this->extend('modele-admin') ?>
+<?= $this->section('content') ?>
 
-        <div class="main-content">
-            <div class="navbar">
-                <h1>📊 Tableau de Bord</h1>
-                <div class="nav-links"></div>
-            </div>
-
-            <div class="container">
+    <div class="container">
         <!-- Statistiques clés -->
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-label">Utilisateurs Total</div>
-                <div class="stat-value"><?= $total_users ?></div>
+                <div class="stat-value"><?= $total_users ?? 0 ?></div>
                 <div class="stat-unit">comptes actifs</div>
             </div>
 
             <div class="stat-card gold">
                 <div class="stat-label">Utilisateurs Gold</div>
-                <div class="stat-value"><?= $gold_users ?></div>
+                <div class="stat-value"><?= $gold_users ?? 0 ?></div>
                 <div class="stat-unit">premium</div>
             </div>
 
             <div class="stat-card success">
                 <div class="stat-label">Abonnements Actifs</div>
-                <div class="stat-value"><?= $active_subscriptions ?></div>
+                <div class="stat-value"><?= $active_subscriptions ?? 0 ?></div>
                 <div class="stat-unit">en cours</div>
             </div>
 
             <div class="stat-card info">
                 <div class="stat-label">Régimes Disponibles</div>
-                <div class="stat-value"><?= $total_regimes ?></div>
+                <div class="stat-value"><?= $total_regimes ?? 0 ?></div>
                 <div class="stat-unit">options</div>
             </div>
 
             <div class="stat-card">
                 <div class="stat-label">Chiffre d'Affaires</div>
-                <div class="stat-value"><?= number_format($total_revenue, 0) ?></div>
+                <div class="stat-value"><?= number_format($total_revenue ?? 0, 0) ?></div>
                 <div class="stat-unit">francs</div>
             </div>
 
             <div class="stat-card gold">
                 <div class="stat-label">Revenue Gold</div>
-                <div class="stat-value"><?= number_format($gold_revenue, 0) ?></div>
+                <div class="stat-value"><?= number_format($gold_revenue ?? 0, 0) ?></div>
                 <div class="stat-unit">francs</div>
             </div>
 
             <div class="stat-card success">
                 <div class="stat-label">Perte Moyenne</div>
-                <div class="stat-value"><?= $avg_weight_loss ?> kg</div>
+                <div class="stat-value"><?= $avg_weight_loss ?? 0 ?> kg</div>
                 <div class="stat-unit">par abonnement</div>
             </div>
 
             <div class="stat-card info">
                 <div class="stat-label">Taux de Succès</div>
-                <div class="stat-value"><?= $success_rate ?>%</div>
+                <div class="stat-value"><?= $success_rate ?? 0 ?>%</div>
                 <div class="stat-unit">objectif atteint</div>
             </div>
         </div>
@@ -387,5 +364,4 @@
         }
         <?php endif; ?>
     </script>
-</body>
-</html>
+<?= $this->endSection() ?>
