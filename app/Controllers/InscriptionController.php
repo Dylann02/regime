@@ -187,7 +187,6 @@ class InscriptionController extends BaseController
         if (! $user || ! isset($user['id'])) {
             return redirect()->to('/login');
         }
-
         $model = new UtilisateurModel();
         $userId = $user['id'];
 
