@@ -4,23 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier un Régime</title>
-    <style>
-        * { box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f7fa; margin: 0; }
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
-        }
-        .container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
-        .card { background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .form-group { margin-bottom: 1rem; }
-        label { display: block; margin-bottom: 0.4rem; font-weight: 600; }
-        input, textarea, select { width: 100%; padding: 0.7rem; border-radius: 6px; border: 1px solid #ddd; }
-        .actions { display: flex; gap: 1rem; margin-top: 1rem; }
-        .btn { background: #667eea; color: white; border: none; padding: 0.6rem 1rem; border-radius: 6px; cursor: pointer; text-decoration: none; }
-        .btn.secondary { background: #6c757d; }
-        .message { padding: 0.8rem 1rem; border-radius: 6px; margin-bottom: 1rem; background: #fdecea; color: #b71c1c; }
-    </style>
+    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
 </head>
 <body>
     <div class="header">

@@ -3,71 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <title>Suggestions de Régimes</title>
+    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
 </head>
 <body>
-    <h1>Nos suggestions pour votre objectif</h1>
-
-    <?php if (session()->getFlashdata('error')): ?>
-        <p style="color: red;"><strong><?= session()->getFlashdata('error') ?></strong></p>
-    <?php endif; ?>
-    <?php if (session()->getFlashdata('success')): ?>
-        <p style="color: green;"><strong><?= session()->getFlashdata('success') ?></strong></p>
-    <?php endif; ?>
-
-    <div class="resume-objectif">
-        <p>Poids actuel : <?= number_format($utilisateur['poids_actuel'], 2) ?> kg</p>
-        <p>Poids cible : <?= number_format($donneesCalcul['poids_cible'], 2) ?> kg</p>
-        <p>Variation nécessaire : <?= number_format($donneesCalcul['delta_kg'], 2) ?> kg</p>
+    <div class="header">
+        <h1>💊 Suggestions de Régimes</h1>
+        <div>
+            <a href="<?= base_url('profil') ?>" class="header-link" style="color: white; text-decoration: none; margin-left: 1rem;">← Retour</a>
+        </div>
     </div>
 
-
-    <h2>Régimes adaptés</h2>
-    <div class="regimes-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
-        <?php foreach ($suggestions as $regime): ?>
-            <div class="card" style="border: 1px solid #ccc; padding: 15px; width: 300px; border-radius: 8px;">
-                <h3><?= $regime['nom'] ?></h3>
-                <p><?= $regime['description'] ?></p>
-                <p><strong>Variation :</strong> <?= $regime['variation_kg_semaine'] ?> kg/semaine</p>
-                <p><strong>Durée estimée :</strong> <?= $regime['duree_calculee'] ?> semaines</p>
-                <p><strong>Prix :</strong> <?= number_format($regime['prix_base'], 0, ',', ' ') ?> Ar</p>
-                <?php if (!empty($regime['remise_gold']) && $regime['remise_gold'] > 0): ?>
-                    <p><strong>Remise Gold :</strong> -<?= number_format($regime['remise_gold'], 0, ',', ' ') ?> Ar</p>
-                    <p><strong>Prix final :</strong> <?= number_format($regime['prix_final'], 0, ',', ' ') ?> Ar</p>
-                <?php endif; ?>
-                
-                <form action="<?= base_url('souscrire') ?>" method="post">
-                    <?= csrf_field() ?>
-                    <input type="hidden" name="regime_id" value="<?= $regime['id'] ?>">
-                    <label for="activite_<?= $regime['id'] ?>">Choisir une activité :</label>
-                    <select name="activite_id" id="activite_<?= $regime['id'] ?>" required>
-                        <option value="" disabled selected>-- Sélectionner --</option>
-                        <?php foreach ($activites as $activite): ?>
-                            <option value="<?= $activite['id'] ?>">
-                                <?= $activite['nom'] ?> (<?= ucfirst($activite['intensite']) ?>)
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                    <button type="submit">Choisir ce régime</button>
-                    <button type="submit" formaction="<?= base_url('suggestions/export-pdf') ?>" formmethod="post">
-                        Exporter en PDF
-                    </button>
-                </form>
+    <div class="container">
+        <?php if (session()->getFlashdata('error')): ?>
+            <div class="message error">
+                ❌ <?= session()->getFlashdata('error') ?>
             </div>
-        <?php endforeach; ?>
-    </div>
-
-    <h2>Activités sportives recommandées</h2>
-    <p>Pour accompagner votre régime, nous vous conseillons les activités suivantes (Intensité : <?= $donneesCalcul['direction'] == 'reduire' ? 'Intense' : ($donneesCalcul['direction'] == 'augmenter' ? 'Faible' : 'Modérée') ?>) :</p>
-    <div class="activites-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
-        <?php foreach ($activites as $activite): ?>
-            <div class="card" style="border: 1px solid #eee; padding: 15px; width: 250px; border-radius: 8px; background-color: #fafafa;">
-                <h4><?= $activite['nom'] ?></h4>
-                <p><?= $activite['description'] ?></p>
-                <p><small>Intensité: <?= ucfirst($activite['intensite']) ?></small></p>
+        <?php endif; ?>
+        <?php if (session()->getFlashdata('success')): ?>
+            <div class="message success">
+                ✅ <?= session()->getFlashdata('success') ?>
             </div>
-        <?php endforeach; ?>
-    </div>
+        <?php endif; ?>
 
-    <p><a href="<?= base_url('profil') ?>">Retour au profil</a></p>
+        <div class="chart-container mb-4">
+            <h3 style="border-bottom: 3px solid var(--primary); padding-bottom: 1rem; margin-bottom: 1.5rem;">📊 Résumé de votre objectif</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                <div class="stat-card">
+                    <div class="stat-label">Poids actuel</div>
+                    <div class="stat-value"><?= number_format($utilisateur['poids_actuel'], 1) ?></div>
+                    <div class="stat-unit">kg</div>
+                </div>
+                <div class="stat-card success">
+                    <div class="stat-label">Poids cible</div>
+                    <div class="stat-value"><?= number_format($donneesCalcul['poids_cible'], 1) ?></div>
+                    <div class="stat-unit">kg</div>
+                </div>
+                <div class="stat-card gold">
+                    <div class="stat-label">Variation nécessaire</div>
+                    <div class="stat-value"><?= abs(number_format($donneesCalcul['delta_kg'], 1)) ?></div>
+                    <div class="stat-unit">kg</div>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="border-bottom: 3px solid var(--primary); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">🍽️ Régimes adaptés</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+            <?php foreach ($suggestions as $regime): ?>
+                <div class="chart-container">
+                    <h4 style="color: var(--primary); margin-top: 0; margin-bottom: 1rem;"><?= $regime['nom'] ?></h4>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;"><?= $regime['description'] ?></p>
+                    
+                    <div style="display: grid; gap: 0.5rem; margin-bottom: 1.5rem;">
+                        <div><strong>Variation:</strong> <span style="color: var(--primary);"><?= $regime['variation_kg_semaine'] ?> kg/semaine</span></div>
+                        <div><strong>Durée estimée:</strong> <span style="color: var(--primary);"><?= $regime['duree_calculee'] ?> semaines</span></div>
+                        <div><strong>Prix:</strong> <span style="color: var(--secondary);"><?= number_format($regime['prix_base'], 0, ',', ' ') ?> Ar</span></div>
+                        <?php if (!empty($regime['remise_gold']) && $regime['remise_gold'] > 0): ?>
+                            <div>
+                                <strong>Remise Gold:</strong> 
+                                <span style="color: var(--success);">-<?= number_format($regime['remise_gold'], 0, ',', ' ') ?> Ar</span>
+                            </div>
+                            <div style="background: var(--primary-light); padding: 0.75rem; border-radius: var(--radius-md); font-weight: 600; color: var(--primary);">
+                                Prix final: <?= number_format($regime['prix_final'], 0, ',', ' ') ?> Ar
+                            </div>
+                        <?php endif; ?>
+                    </div>
+
+                    <form action="<?= base_url('souscrire') ?>" method="post">
+                        <?= csrf_field() ?>
+                        <input type="hidden" name="regime_id" value="<?= $regime['id'] ?>">
+                        
+                        <div class="form-group">
+                            <label for="activite_<?= $regime['id'] ?>">Choisir une activité *</label>
+                            <select name="activite_id" id="activite_<?= $regime['id'] ?>" required>
+                                <option value="" disabled selected>-- Sélectionner --</option>
+                                <?php foreach ($activites as $activite): ?>
+                                    <option value="<?= $activite['id'] ?>">
+                                        <?= $activite['nom'] ?> (<?= ucfirst($activite['intensite']) ?>)
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+                        <div class="actions">
+                            <button type="submit" class="btn">Souscrire à ce régime</button>
+                            <button type="submit" formaction="<?= base_url('suggestions/export-pdf') ?>" formmethod="post" class="btn secondary">Exporter PDF</button>
+                        </div>
+                    </form>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+        <h2 style="border-bottom: 3px solid var(--primary); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">🏃 Activités sportives recommandées</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+            Pour accompagner votre régime, voici les activités recommandées (Intensité: 
+            <strong style="color: var(--primary);">
+                <?= $donneesCalcul['direction'] == 'reduire' ? '🔥 Intense' : ($donneesCalcul['direction'] == 'augmenter' ? '🌱 Faible' : '⚖️ Modérée') ?>
+            </strong>):
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+            <?php foreach ($activites as $activite): ?>
+                <div class="stat-card success">
+                    <h4 style="margin-top: 0; margin-bottom: 0.5rem; color: var(--text-primary);"><?= $activite['nom'] ?></h4>
+                    <p style="color: var(--text-secondary); margin: 0.5rem 0; font-size: 0.9rem;"><?= $activite['description'] ?></p>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-light);">
+                        <span class="badge success">Intensité: <?= ucfirst($activite['intensite']) ?></span>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
 </body>
 </html>

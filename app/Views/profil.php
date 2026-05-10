@@ -4,46 +4,112 @@
 <head>
     <meta charset="UTF-8">
     <title>Profil utilisateur</title>
+    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
 </head>
 
 <body>
-    <div class="profile-container">
-        <h2>Profil utilisateur</h2>
+    <div class="header">
+        <h1>👤 Profil Utilisateur</h1>
+        <div>
+            <a href="<?= base_url('logout') ?>" class="header-link" style="color: white; text-decoration: none; margin-left: 1rem;">Déconnexion</a>
+        </div>
+    </div>
+
+    <div class="container">
         <?php if (session()->getFlashdata('success')): ?>
-            <p style="color:greenyellow"><?= session()->getFlashdata('success') ?> </p>
+            <div class="message success">
+                <?= session()->getFlashdata('success') ?>
+            </div>
         <?php endif; ?>
         <?php if (isset($message)): ?>
-            <div style="color: green; background-color: #d4edda; padding: 10px; border-radius: 3px; margin-bottom: 15px;">
+            <div class="message success">
                 <?= esc($message) ?>
             </div>
         <?php endif; ?>
 
         <?php if (!empty($utilisateur)): ?>
-            <div class="info"><strong>Nom :</strong> <?= esc($utilisateur['nom']) ?></div>
-            <div class="info"><strong>Prénom :</strong> <?= esc($utilisateur['prenom']) ?></div>
-            <div class="info"><strong>Genre :</strong> <?= esc($utilisateur['genre']) ?></div>
-            <div class="info"><strong>Date de naissance :</strong> <?= esc($utilisateur['date_naissance']) ?></div>
-            <div class="info"><strong>Taille :</strong> <?= esc($utilisateur['taille_cm']) ?> cm</div>
-            <div class="info"><strong>Poids :</strong> <?= esc($utilisateur['poids_actuel']) ?> kg</div>
-            <div class="info"><strong>Objectif :</strong> <?= esc($utilisateur['objectif_actuel'] ?? 'Non défini') ?></div>
-            <div class="info"><strong>Solde :</strong> <?= number_format($utilisateur['solde'] ?? 0, 2) ?> €</div>
-            <div class="info"><strong>Statut Gold :</strong> <?= ($utilisateur['est_gold'] ?? 0) ? 'Oui' : 'Non' ?></div>
+            <div class="chart-container mb-4">
+                <h3 style="border-bottom: 3px solid var(--primary); padding-bottom: 1rem; margin-bottom: 1.5rem;">📋 Informations Personnelles</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                    <div class="stat-card">
+                        <div class="stat-label">Nom</div>
+                        <div style="font-size: 1.3rem; font-weight: 600; color: var(--text-primary);"><?= esc($utilisateur['nom']) ?></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Prénom</div>
+                        <div style="font-size: 1.3rem; font-weight: 600; color: var(--text-primary);"><?= esc($utilisateur['prenom']) ?></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Genre</div>
+                        <div style="font-size: 1.3rem; font-weight: 600; color: var(--text-primary);"><?= ucfirst(esc($utilisateur['genre'])) ?></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Date de naissance</div>
+                        <div style="font-size: 1.3rem; font-weight: 600; color: var(--text-primary);"><?= esc($utilisateur['date_naissance']) ?></div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="chart-container mb-4">
+                <h3 style="border-bottom: 3px solid var(--primary); padding-bottom: 1rem; margin-bottom: 1.5rem;">⚖️ Données Physiques</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                    <div class="stat-card success">
+                        <div class="stat-label">Taille</div>
+                        <div class="stat-value"><?= esc($utilisateur['taille_cm']) ?></div>
+                        <div class="stat-unit">cm</div>
+                    </div>
+                    <div class="stat-card gold">
+                        <div class="stat-label">Poids Actuel</div>
+                        <div class="stat-value"><?= esc($utilisateur['poids_actuel']) ?></div>
+                        <div class="stat-unit">kg</div>
+                    </div>
+                    <?php if (!empty($imc)): ?>
+                    <div class="stat-card info">
+                        <div class="stat-label">IMC</div>
+                        <div class="stat-value"><?= number_format($imc, 1) ?></div>
+                        <div class="stat-unit">indice</div>
+                    </div>
+                    <?php endif; ?>
+                </div>
+            </div>
 
+            <div class="chart-container mb-4">
+                <h3 style="border-bottom: 3px solid var(--primary); padding-bottom: 1rem; margin-bottom: 1.5rem;">🎯 Objectif & Statut</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                    <div class="stat-card">
+                        <div class="stat-label">Objectif</div>
+                        <div style="font-size: 1.1rem; font-weight: 600; color: var(--primary);">
+                            <?php
+                                $obj = $utilisateur['objectif_actuel'] ?? 'Non défini';
+                                $icons = ['reduire' => '📉', 'augmenter' => '📈', 'imc_ideal' => '✨'];
+                                echo ($icons[$obj] ?? '❓') . ' ' . ucfirst(str_replace('_', ' ', $obj));
+                            ?>
+                        </div>
+                    </div>
+                    <div class="stat-card gold">
+                        <div class="stat-label">Statut Gold</div>
+                        <div style="font-size: 1.1rem; font-weight: 600; color: var(--secondary);">
+                            <?= ($utilisateur['est_gold'] ?? 0) ? '⭐ Oui (Actif)' : '⭕ Non' ?>
+                        </div>
+                    </div>
+                    <div class="stat-card success">
+                        <div class="stat-label">Solde Disponible</div>
+                        <div class="stat-value" style="color: var(--success);"><?= number_format($utilisateur['solde'] ?? 0, 2) ?></div>
+                        <div class="stat-unit">€</div>
+                    </div>
+                </div>
+            </div>
 
-            <?php if (!empty($imc)): ?>
-                <div class="info"><strong>IMC :</strong> <?= number_format($imc, 2) ?></div>
-            <?php endif; ?>
-
-            <div class="actions">
-                <a href="<?= base_url('profil/modifier') ?>" class="btn">Modifier profil</a>
-                <a href="<?= base_url('suggestions') ?>" class="btn">Voir les suggestions de régime</a>
-                <a href="<?= base_url('gold') ?>" class="btn">Passer à l'option Gold</a>
-                <a href="<?= base_url('ajoutArgent') ?>">Ajouter du credit</a>
-                <a href="<?= base_url('logout') ?>" class="btn logout-btn">Déconnexion</a>
+            <div class="actions mb-4">
+                <a href="<?= base_url('profil/modifier') ?>" class="btn"> Modifier profil</a>
+                <a href="<?= base_url('suggestions') ?>" class="btn secondary"> Suggestions de régime</a>
+                <a href="<?= base_url('gold') ?>" class="btn">Option Gold</a>
+                <a href="<?= base_url('ajoutArgent') ?>" class="btn secondary"> Ajouter du crédit</a>
             </div>
         <?php else: ?>
-            <p>Utilisateur introuvable.</p>
+            <div class="message error">
+                 Utilisateur introuvable.
+            </div>
         <?php endif; ?>
     </div>
 </body>

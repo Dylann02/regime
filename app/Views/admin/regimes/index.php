@@ -4,66 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des Régimes</title>
-    <style>
-        * { box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f7fa;
-            color: #333;
-            margin: 0;
-        }
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .header a { color: white; text-decoration: none; margin-left: 1rem; }
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        .actions { display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
-        .btn {
-            background: #667eea;
-            color: white;
-            padding: 0.6rem 1rem;
-            border-radius: 6px;
-            text-decoration: none;
-            display: inline-block;
-            border: none;
-            cursor: pointer;
-        }
-        .btn.secondary { background: #6c757d; }
-        .btn.danger { background: #dc3545; }
-        .table-container {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            overflow-x: auto;
-        }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 1rem; border-bottom: 1px solid #eee; text-align: left; }
-        th { background: #f8f9fa; color: #667eea; }
-        .badge {
-            padding: 0.2rem 0.6rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
-        }
-        .badge.success { background: #e6f4ea; color: #28a745; }
-        .badge.muted { background: #f0f0f0; color: #777; }
-        .message {
-            padding: 0.8rem 1rem;
-            border-radius: 6px;
-            margin-bottom: 1rem;
-        }
-        .message.success { background: #e6f4ea; color: #1e7e34; }
-        .message.error { background: #fdecea; color: #b71c1c; }
-        form.inline { display: inline; }
-    </style>
+    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
 </head>
 <body>
     <div class="header">
