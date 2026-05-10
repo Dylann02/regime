@@ -4,16 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paramètres</title>
-    <style>
-        body{font-family:Segoe UI, Tahoma, Arial; background:#f5f7fa; margin:0}
-        .header{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:1rem 2rem;display:flex;justify-content:space-between}
-        .container{max-width:1100px;margin:2rem auto;padding:0 1rem}
-        table{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden}
-        th,td{padding:0.9rem;border-bottom:1px solid #eee;text-align:left}
-        th{background:#f8f9fa;color:#667eea}
-        .actions{display:flex;gap:8px}
-        .btn{background:#667eea;color:#fff;padding:0.5rem 0.8rem;border-radius:6px;text-decoration:none}
-    </style>
+    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
 </head>
 <body>
     <div class="header">
