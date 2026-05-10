@@ -22,8 +22,14 @@ $routes->post('inscription/finaliser', 'InscriptionController::finaliser');
 $routes->get('inscription/choix_objectif', 'InscriptionController::choixObjectif');
 $routes->post('inscription/save_objectif', 'InscriptionController::saveObjectif');
 
+// Routes protégées par filtre admin
+$routes->group('', ['filter' => 'admin'], function($routes) {
+    $routes->get('dashboard', 'DashboardController::index');
+    $routes->get('logout', 'AuthController::logout');
+});
 
-$routes->group('',['filter' => 'auth'], function($routes) {
+// Routes protégées par filtre auth (utilisateurs normaux)
+$routes->group('', ['filter' => 'auth'], function($routes) {
     $routes->get('profil', 'InscriptionController::profil');
     $routes->get('profil/modifier', 'InscriptionController::edit');
     $routes->post('profil/modifier', 'InscriptionController::update');
@@ -34,7 +40,6 @@ $routes->group('',['filter' => 'auth'], function($routes) {
     $routes->get('gold', 'GoldController::index');
     $routes->get('gold/activer', 'GoldController::activerForm');
     $routes->post('gold/activer', 'GoldController::activer');
-    $routes->get('logout', 'AuthController::logout');
     $routes->get('ajoutArgent' , 'CreditController::index');
     $routes->post('traitementCredit' , 'CreditController::ajoutCredit');
 });
