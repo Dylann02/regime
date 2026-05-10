@@ -16,7 +16,7 @@ class CreditController extends BaseController {
             return redirect()->to('/login');
         }
 
-        return view('formCredit' , ['utilisateur' =>$utilisateur,]);
+        return view('formCredit' , ['utilisateur' =>$utilisateur]);
     }
 
     public function ajoutCredit(){
