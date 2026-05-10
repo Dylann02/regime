@@ -49,10 +49,10 @@
                                 </td>
                                 <td>
                                     <div class="table-actions">
-                                        <a class="btn btn-secondary btn-small" href="<?= base_url('admin/activites/edit/' . $activite['id']) ?>">✏️ Modifier</a>
+                                        <a class="btn btn-secondary btn-small" href="<?= base_url('admin/activites/edit/' . $activite['id']) ?>">Modifier</a>
                                         <form action="<?= base_url('admin/activites/delete/' . $activite['id']) ?>" method="post" onsubmit="return confirm('Supprimer cette activité ?');">
                                             <?= csrf_field() ?>
-                                            <button class="btn btn-danger btn-small" type="submit">🗑️ Supprimer</button>
+                                            <button class="btn btn-danger btn-small" type="submit">Supprimer</button>
                                         </form>
                                     </div>
                                 </td>
