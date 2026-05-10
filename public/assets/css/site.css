@@ -1,0 +1,102 @@
+/* Basic warm theme: primary color is a warm terracotta. Adjust --primary-color if you want it closer to your logo.
+   Background is a soft beige/off-white for a warmer, friendly look. */
+:root{
+  --primary-color:#c85a3b;
+  --primary-contrast:#ffffff;
+  --bg:#f7f3ec;
+  --muted:#6b6b6b;
+}
+
+*{box-sizing:border-box}
+body{font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background:var(--bg); color:#222; padding-top:80px;}
+
+.site-header{background:#fff; border-bottom:1px solid rgba(0,0,0,0.05); position:fixed; top:0; left:0; right:0; z-index:1000; box-shadow:0 2px 8px rgba(0,0,0,0.08);}
+.site-header-inner{max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:12px 16px}
+.site-logo img{height:48px}
+.site-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:14px}
+.site-nav a{color:var(--muted); text-decoration:none; padding:8px 12px;border-radius:8px}
+.site-nav a:hover{background:rgba(0,0,0,0.03); color:#111}
+
+.site-actions{display:flex;align-items:center;gap:10px}
+.btn{display:inline-block; padding:8px 12px; border-radius:8px; text-decoration:none; color:#fff}
+.btn-primary{background:var(--primary-color)}
+.btn-secondary{background:#666;color:#fff;padding:6px 10px;border-radius:6px}
+.username{color:#444;font-weight:600;margin-right:8px}
+
+.site-main{max-width:1100px;margin:20px auto;padding:0 16px;}
+.page-header{background:transparent;margin-bottom:18px}
+.page-header h1{margin:0;font-size:1.6rem;color:#333}
+
+/* Cards and clearer lists for friendlier UI */
+.card{background:#fff;border-radius:10px;padding:16px;box-shadow:0 4px 14px rgba(0,0,0,0.06);margin-bottom:16px}
+
+.site-footer{margin-top:28px;padding:20px 0;background:#ede5d6;color:#444}
+.site-footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:0 16px}
+.footer-left img{height:36px}
+.footer-left .accroche{margin:8px 0;color:var(--muted)}
+.footer-right h4{margin:0 0 8px 0}
+.site-footer-bottom{max-width:1100px;margin:0 auto;padding:8px 16px;color:var(--muted);text-align:center}
+.site-footer-bottom hr{border:0;border-top:1px solid rgba(0,0,0,0.08);margin:8px 0}
+
+/* Form Styles */
+.form-group{margin-bottom:18px}
+.form-group label{display:block;margin-bottom:6px;font-weight:600;color:#333;font-size:0.95rem}
+.form-group input,
+.form-group textarea,
+.form-group select{width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:6px;font-family:inherit;font-size:0.95rem;color:#333;background:#fff}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{outline:none;border-color:var(--primary-color);box-shadow:0 0 0 3px rgba(200,90,59,0.1)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-group input[type="checkbox"]{width:auto;margin-right:6px}
+.form-group input[type="checkbox"] + *{vertical-align:middle}
+
+/* Messages */
+.message{padding:14px 16px;border-radius:8px;margin-bottom:16px;font-size:0.95rem}
+.message.error{background:#fee;border-left:4px solid #c85a3b;color:#922}
+.message.success{background:#e8f5e9;border-left:4px solid #4caf50;color:#2e7d32}
+.message.warning{background:#fff3cd;border-left:4px solid #ff9800;color:#856404}
+.message.info{background:#e3f2fd;border-left:4px solid #2196f3;color:#1565c0}
+.message div{margin:4px 0}
+.message div:first-child{margin-top:0}
+
+/* Actions */
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.actions.inline{gap:6px}
+
+/* Buttons */
+.btn{border:none;cursor:pointer;font-weight:600;font-size:0.9rem;transition:all 0.2s;text-decoration:none}
+.btn:hover{transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,0.15)}
+.btn:active{transform:translateY(0)}
+.btn-primary{background:var(--primary-color);color:#fff;padding:10px 16px;border-radius:6px}
+.btn-primary:hover{background:#b34a2b}
+.btn-secondary{background:#999;color:#fff;padding:8px 14px;border-radius:6px;font-weight:500}
+.btn-secondary:hover{background:#777}
+.btn-danger{background:#dc3545;color:#fff;padding:8px 14px;border-radius:6px;font-weight:500}
+.btn-danger:hover{background:#c82333}
+.btn-success{background:#28a745;color:#fff;padding:8px 14px;border-radius:6px;font-weight:500}
+.btn-success:hover{background:#218838}
+.btn-small{padding:6px 10px;font-size:0.85rem}
+.btn-icon{padding:8px 12px;display:inline-flex;align-items:center;gap:4px}
+
+/* Table actions */
+.table-actions{display:flex;gap:6px;align-items:center}
+.table-actions form{display:inline;margin:0}
+.table-actions form .btn{padding:6px 10px;font-size:0.85rem}
+
+/* Form layout */
+.form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.form-row .form-group{margin-bottom:0}
+
+/* Container */
+.container{max-width:1100px;margin:0 auto;padding:0 16px}
+
+/* Responsive */
+@media (max-width:800px){
+  .site-header-inner{flex-direction:column;gap:8px}
+  .site-nav ul{flex-wrap:wrap;justify-content:center}
+  .site-footer-inner{flex-direction:column;align-items:center;text-align:center}
+  .form-row{grid-template-columns:1fr}
+  .actions{flex-direction:column}
+  .actions.inline{flex-direction:row}
+}

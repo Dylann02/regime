@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion des Activités</title>
-    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
-</head>
-<body>
-    <div class="header">
-        <h1>🏃 Gestion des Activités</h1>
-        <div>
-            <a href="<?= base_url('dashboard') ?>">Dashboard</a>
-            <a href="<?= base_url('admin/regimes') ?>">Régimes</a>
-            <a href="<?= base_url('logout') ?>">Déconnexion</a>
-        </div>
-    </div>
+<?php $title = 'Gestion des Activités' ?>
+<?= $this->extend('modele-admin') ?>
+<?= $this->section('content') ?>
 
     <div class="container">
         <?php if (!empty($success)): ?>
@@ -30,8 +16,8 @@
         <?php endif; ?>
 
         <div class="actions">
-            <a class="btn" href="<?= base_url('admin/activites/create') ?>">➕ Ajouter une activité</a>
-            <a class="btn secondary" href="<?= base_url('admin/regimes') ?>">Voir les régimes</a>
+            <a class="btn btn-primary" href="<?= base_url('admin/activites/create') ?>">➕ Ajouter une activité</a>
+            <a class="btn btn-secondary" href="<?= base_url('admin/regimes') ?>">Voir les régimes</a>
         </div>
 
         <div class="table-container">
@@ -62,11 +48,13 @@
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <a class="btn secondary" href="<?= base_url('admin/activites/edit/' . $activite['id']) ?>">Modifier</a>
-                                    <form class="inline" action="<?= base_url('admin/activites/delete/' . $activite['id']) ?>" method="post" onsubmit="return confirm('Supprimer cette activité ?');">
-                                        <?= csrf_field() ?>
-                                        <button class="btn danger" type="submit">Supprimer</button>
-                                    </form>
+                                    <div class="table-actions">
+                                        <a class="btn btn-secondary btn-small" href="<?= base_url('admin/activites/edit/' . $activite['id']) ?>">✏️ Modifier</a>
+                                        <form action="<?= base_url('admin/activites/delete/' . $activite['id']) ?>" method="post" onsubmit="return confirm('Supprimer cette activité ?');">
+                                            <?= csrf_field() ?>
+                                            <button class="btn btn-danger btn-small" type="submit">🗑️ Supprimer</button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -79,5 +67,5 @@
             </table>
         </div>
     </div>
-</body>
-</html>
+
+<?= $this->endSection() ?>

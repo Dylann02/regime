@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Profil utilisateur</title>
-    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
-</head>
-
-<body>
-    <div class="header">
-        <h1>👤 Profil Utilisateur</h1>
-        <div>
-            <a href="<?= base_url('logout') ?>" class="header-link" style="color: white; text-decoration: none; margin-left: 1rem;">Déconnexion</a>
-        </div>
-    </div>
+<?php $title = 'Profil utilisateur' ?>
+<?= $this->extend('modele') ?>
+<?= $this->section('content') ?>
 
     <div class="container">
         <?php if (session()->getFlashdata('success')): ?>
@@ -101,10 +88,10 @@
             </div>
 
             <div class="actions mb-4">
-                <a href="<?= base_url('profil/modifier') ?>" class="btn"> Modifier profil</a>
-                <a href="<?= base_url('suggestions') ?>" class="btn secondary"> Suggestions de régime</a>
-                <a href="<?= base_url('gold') ?>" class="btn">Option Gold</a>
-                <a href="<?= base_url('ajoutArgent') ?>" class="btn secondary"> Ajouter du crédit</a>
+                <a href="<?= base_url('profil/modifier') ?>" class="btn btn-primary"> Modifier profil</a>
+                <a href="<?= base_url('suggestions') ?>" class="btn btn-secondary"> Suggestions de régime</a>
+                <a href="<?= base_url('gold') ?>" class="btn btn-primary">Option Gold</a>
+                <a href="<?= base_url('ajoutArgent') ?>" class="btn btn-secondary"> Ajouter du crédit</a>
             </div>
         <?php else: ?>
             <div class="message error">
@@ -112,6 +99,4 @@
             </div>
         <?php endif; ?>
     </div>
-</body>
-
-</html>
+<?= $this->endSection() ?>
