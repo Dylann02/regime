@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Option Gold</title>
-    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
-</head>
-<body>
-    <div class="header">
-        <h1>⭐ Option Gold</h1>
-        <div>
-            <a href="<?= base_url('profil') ?>" class="header-link" style="color: white; text-decoration: none; margin-left: 1rem;">← Retour au profil</a>
-        </div>
-    </div>
+<?php $title = 'Option Gold' ?>
+<?= $this->extend('modele') ?>
+<?= $this->section('content') ?>
 
     <div class="container" style="max-width: 600px;">
         <?php if (session()->getFlashdata('error')): ?>
@@ -54,13 +43,11 @@
                 <form action="<?= base_url('gold/activer') ?>" method="post">
                     <?= csrf_field() ?>
                     <div class="actions">
-                        <button type="submit" class="btn">Passer à Gold</button>
-                        <a href="<?= base_url('profil') ?>" class="btn secondary" style="text-decoration: none; text-align: center;">Annuler</a>
+                        <button type="submit" class="btn btn-primary">Passer à Gold</button>
+                        <a href="<?= base_url('profil') ?>" class="btn btn-secondary" style="text-decoration: none; text-align: center;">Annuler</a>
                     </div>
                 </form>
             <?php endif; ?>
         </div>
     </div>
-</body>
-</html>
-</html>
+<?= $this->endSection() ?>

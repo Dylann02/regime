@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Étape suivante</title>
-    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
-</head>
-<body>
-    <div class="header">
-        <h1>✓ Inscription Réussie</h1>
-    </div>
+<?php $title = 'Inscription réussie' ?>
+<?= $this->extend('modele') ?>
+<?= $this->section('content') ?>
 
     <div class="container" style="max-width: 600px;">
         <div class="chart-container" style="text-align: center;">
@@ -31,10 +22,9 @@
             </div>
 
             <div class="actions">
-                <a href="<?= base_url('profil') ?>" class="btn">Accéder à mon profil</a>
-                <a href="<?= base_url('suggestions') ?>" class="btn secondary" style="text-decoration: none; text-align: center;">Voir les régimes</a>
+                <a href="<?= base_url('profil') ?>" class="btn btn-primary">Accéder à mon profil</a>
+                <a href="<?= base_url('suggestions') ?>" class="btn btn-secondary" style="text-decoration: none; text-align: center;">Voir les régimes</a>
             </div>
         </div>
     </div>
-</body>
-</html>
+<?= $this->endSection() ?>

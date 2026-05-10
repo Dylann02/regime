@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Suggestions de Régimes</title>
-    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
-</head>
-<body>
-    <div class="header">
-        <h1>💊 Suggestions de Régimes</h1>
-        <div>
-            <a href="<?= base_url('profil') ?>" class="header-link" style="color: white; text-decoration: none; margin-left: 1rem;">← Retour</a>
-        </div>
-    </div>
+<?php $title = 'Suggestions de Régimes' ?>
+<?= $this->extend('modele') ?>
+<?= $this->section('content') ?>
 
     <div class="container">
         <?php if (session()->getFlashdata('error')): ?>
@@ -85,8 +74,8 @@
                         </div>
 
                         <div class="actions">
-                            <button type="submit" class="btn">Souscrire à ce régime</button>
-                            <button type="submit" formaction="<?= base_url('suggestions/export-pdf') ?>" formmethod="post" class="btn secondary">Exporter PDF</button>
+                            <button type="submit" class="btn btn-primary">Souscrire à ce régime</button>
+                            <button type="submit" formaction="<?= base_url('suggestions/export-pdf') ?>" formmethod="post" class="btn btn-secondary">Exporter PDF</button>
                         </div>
                     </form>
                 </div>
@@ -112,5 +101,5 @@
             <?php endforeach; ?>
         </div>
     </div>
-</body>
-</html>
+
+<?= $this->endSection() ?>
