@@ -205,13 +205,13 @@ class InscriptionController extends BaseController
             'poids_actuel' => $this->request->getPost('poids_actuel'),
         ];
 
-        $model->set($data)->where('id', $userId)->update();
+        $model->update($userId, $data);
         
         $utilisateurMisAjour = $model->find($userId);
         if (! $utilisateurMisAjour) {
             return redirect()->to('/profil')->with('error', 'Erreur lors de la récupération des données');
         }
-        
+         
         session()->set('user', [
             'id' => $userId,
             'nom' => $utilisateurMisAjour['nom'],

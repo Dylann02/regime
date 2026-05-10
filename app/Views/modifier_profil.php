@@ -64,6 +64,9 @@
                 <a href="<?= base_url('profil') ?>">
                     <button type="button" class="cancel-btn">Annuler</button>
                 </a>
+                <a href="<?= base_url('dashboard') ?>">
+                    <button type="button" class="dashboard-btn">📊 Tableau de Bord</button>
+                </a>
             </div>
         </form>
     </div>
