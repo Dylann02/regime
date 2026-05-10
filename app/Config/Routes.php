@@ -35,5 +35,7 @@ $routes->group('',['filter' => 'auth'], function($routes) {
     $routes->get('gold/activer', 'GoldController::activerForm');
     $routes->post('gold/activer', 'GoldController::activer');
     $routes->get('logout', 'AuthController::logout');
+    $routes->get('ajoutArgent' , 'CreditController::index');
+    $routes->post('traitementCredit' , 'CreditController::ajoutCredit');
 });
 ?>

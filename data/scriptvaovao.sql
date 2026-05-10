@@ -127,3 +127,8 @@ CREATE TABLE admins (
     email        VARCHAR(150) NOT NULL UNIQUE,
     mot_de_passe VARCHAR(255) NOT NULL
 );
+INSERT INTO codes_recharge 
+(code, montant, est_valide, est_utilise, utilisateur_id, date_utilisation)
+VALUES
+('ABC12345', 5000.00, 1, 0, NULL, NULL),
+('XYZ98765', 10000.00, 1, 0, NULL, NULL);
