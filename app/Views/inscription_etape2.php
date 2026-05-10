@@ -31,7 +31,7 @@
         <?php endif; ?>
 
         <div style="background: linear-gradient(135deg, #e3f2fd 0%, #d1ecf1 100%); padding: 16px; border-radius: 8px; margin-bottom: 20px; text-align: center; color: #1565c0; font-weight: 600; border-left: 4px solid #2196f3;">
-            ⚠️ Étape 2 / 2 - Informations physiques
+            Étape 2 / 2 - Informations physiques
         </div>
 
         <div class="card">
@@ -41,17 +41,17 @@
                 <?= csrf_field() ?>
 
                 <div class="form-group">
-                    <label for="taille_cm">📏 Taille (cm) *</label>
+                    <label for="taille_cm">Taille (cm) *</label>
                     <input type="number" id="taille_cm" step="0.01" name="taille_cm" placeholder="ex: 175" value="<?= set_value('taille_cm') ?>" required>
                 </div>
 
                 <div class="form-group" style="margin-bottom: 28px;">
-                    <label for="poids_actuel">⚖️ Poids (kg) *</label>
+                    <label for="poids_actuel">Poids (kg) *</label>
                     <input type="number" id="poids_actuel" step="0.01" name="poids_actuel" placeholder="ex: 75.5" value="<?= set_value('poids_actuel') ?>" required>
                 </div>
 
                 <div class="actions" style="margin-top: 28px; justify-content: center;">
-                    <button type="submit" class="btn btn-primary" style="padding: 12px 24px; font-size: 1rem;">✓ Finaliser l'inscription</button>
+                    <button type="submit" class="btn btn-primary" style="padding: 12px 24px; font-size: 1rem;">Finaliser l'inscription</button>
                 </div>
             </form>
 

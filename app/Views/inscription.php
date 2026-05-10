@@ -31,7 +31,7 @@
         <?php endif; ?>
 
         <div style="background: linear-gradient(135deg, #e8f5e9 0%, #d4edda 100%); padding: 16px; border-radius: 8px; margin-bottom: 20px; text-align: center; color: #2e7d32; font-weight: 600; border-left: 4px solid #4caf50;">
-            ℹ️ Étape 1 / 2 - Informations personnelles
+            Étape 1 / 2 - Informations personnelles
         </div>
 
         <div class="card">
@@ -42,46 +42,46 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="nom">👤 Nom *</label>
+                        <label for="nom">Nom *</label>
                         <input type="text" id="nom" name="nom" placeholder="ex: Dupont" value="<?= set_value('nom') ?>" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="prenom">👤 Prénom *</label>
+                        <label for="prenom">Prénom *</label>
                         <input type="text" id="prenom" name="prenom" placeholder="ex: Jean" value="<?= set_value('prenom') ?>" required>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">📧 Email *</label>
+                    <label for="email">Email *</label>
                     <input type="email" id="email" name="email" placeholder="votre@email.com" value="<?= set_value('email') ?>" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="mot_de_passe">🔐 Mot de passe *</label>
+                    <label for="mot_de_passe">Mot de passe *</label>
                     <input type="password" id="mot_de_passe" name="mot_de_passe" placeholder="Minimum 8 caractères" required>
                     <small style="color: #999; display: block; margin-top: 4px;">Au moins 8 caractères pour sécuriser votre compte</small>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="genre">⚕️ Genre *</label>
+                        <label for="genre">Genre *</label>
                         <select id="genre" name="genre" required>
                             <option value="">-- Choisir --</option>
-                            <option value="homme" <?= set_select('genre', 'homme') ?>>👨 Homme</option>
-                            <option value="femme" <?= set_select('genre', 'femme') ?>>👩 Femme</option>
-                            <option value="autre" <?= set_select('genre', 'autre') ?>>🧑 Autre</option>
+                            <option value="homme" <?= set_select('genre', 'homme') ?>>Homme</option>
+                            <option value="femme" <?= set_select('genre', 'femme') ?>>Femme</option>
+                            <option value="autre" <?= set_select('genre', 'autre') ?>>Autre</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="date_naissance">📅 Date de naissance *</label>
+                        <label for="date_naissance">Date de naissance *</label>
                         <input type="date" id="date_naissance" name="date_naissance" value="<?= set_value('date_naissance') ?>" required>
                     </div>
                 </div>
 
                 <div class="actions" style="margin-top: 24px; justify-content: center;">
-                    <button type="submit" class="btn btn-primary" style="padding: 12px 24px; font-size: 1rem;">✓ Continuer →</button>
+                    <button type="submit" class="btn btn-primary" style="padding: 12px 24px; font-size: 1rem;">Continuer</button>
                 </div>
             </form>
 
