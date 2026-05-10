@@ -59,9 +59,9 @@ CREATE TABLE regimes (
     pct_poisson     DECIMAL(5,2) NOT NULL DEFAULT 0.00,
     pct_volaille    DECIMAL(5,2) NOT NULL DEFAULT 0.00,
     -- Logique de variation de poids par semaine
-    variation_kg_semaine DECIMAL(5,3) NOT NULL COMMENT 'Négatif pour perte, Positif pour prise', [cite: 44]
+    variation_kg_semaine DECIMAL(5,3) NOT NULL COMMENT 'Négatif pour perte, Positif pour prise',
     est_actif       TINYINT(1) DEFAULT 1,
-    CONSTRAINT chk_composition CHECK (pct_viande + pct_poisson + pct_volaille <= 100) [cite: 51]
+    CONSTRAINT chk_composition CHECK (pct_viande + pct_poisson + pct_volaille <= 100) 
 ) ENGINE=InnoDB;
 
 -- ------------------------------------------------------------
