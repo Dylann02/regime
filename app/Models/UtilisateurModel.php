@@ -42,30 +42,6 @@ class UtilisateurModel extends Model
         'poids_actuel' => 'required|numeric'
     ];
 
-    // Règles de validation pour la mise à jour du profil
-    protected $validationRulesUpdateProfile = [
-        'nom' => 'required|min_length[2]',
-        'prenom' => 'required|min_length[2]',
-        // Correction ici :
-        'email' => 'required|valid_email|is_unique[utilisateurs.email,id,{id}]',
-        'genre' => 'required|in_list[homme,femme,autre]',
-        'date_naissance' => 'required|valid_date',
-        'taille_cm' => 'required|numeric',
-        'poids_actuel' => 'required|numeric'
-    ];
-
-    // Règles de validation pour la mise à jour complète
-    protected $validationRulesUpdate = [
-        'nom' => 'required|min_length[2]',
-        'prenom' => 'required|min_length[2]',
-        'email' => 'required|valid_email',
-        'genre' => 'required|in_list[homme,femme,autre]',
-        'date_naissance' => 'required|valid_date',
-        'taille_cm' => 'required|numeric',
-        'poids_actuel' => 'required|numeric',
-        'objectif_actuel' => 'required|in_list[augmenter,reduire,imc_ideal]'
-    ];
-
     protected $validationMessages = [
         'nom' => [
             'required' => 'Le nom est requis.',
@@ -103,8 +79,33 @@ class UtilisateurModel extends Model
         'objectif_actuel' => [
             'required' => 'L\'objectif est requis.',
             'in_list' => 'L\'objectif doit être parmi: augmenter, reduire, imc_ideal.'
+        ],
+        'valeur_objectif' => [
+            'required' => 'La valeur objectif est requise.',
+            'numeric' => 'La valeur objectif doit être un nombre.',
+            'greater_than' => 'La valeur objectif doit être supérieure à 0.'
         ]
     ];
+
+    public function updateProfil(int $id, array $data): bool
+    {
+        $rules = [
+            'nom' => 'required|min_length[2]',
+            'prenom' => 'required|min_length[2]',
+            'email' => 'required|valid_email|is_unique[utilisateurs.email,id,' . $id . ']',
+            'genre' => 'required|in_list[homme,femme,autre]',
+            'date_naissance' => 'required|valid_date',
+            'taille_cm' => 'required|numeric',
+            'poids_actuel' => 'required|numeric',
+            'objectif_actuel' => 'required|in_list[reduire,augmenter,imc_ideal]',
+            'valeur_objectif' => 'required|numeric|greater_than[0]'
+        ];
+
+        $this->setValidationRules($rules);
+        $this->setValidationMessages($this->validationMessages);
+
+        return $this->update($id, $data) !== false;
+    }
 
     public function getIMC($id)
     {

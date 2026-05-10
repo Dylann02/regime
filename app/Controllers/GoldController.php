@@ -3,11 +3,10 @@
 namespace App\Controllers;
 
 use App\Models\UtilisateurModel;
+use App\Models\ParametreModel;
 
 class GoldController extends BaseController
 {
-    private const GOLD_PRICE = 15000;
-
     public function index()
     {
         $user = session()->get('user');
@@ -22,9 +21,12 @@ class GoldController extends BaseController
             return redirect()->to('/login');
         }
 
+        $paramModel = new ParametreModel();
+        $goldPrice = (float) ($paramModel->getValeur('prix_gold', '15000'));
+
         return view('gold/index', [
             'utilisateur' => $utilisateur,
-            'goldPrice' => self::GOLD_PRICE
+            'goldPrice' => $goldPrice
         ]);
     }
 
@@ -42,9 +44,12 @@ class GoldController extends BaseController
             return redirect()->to('/login');
         }
 
+        $paramModel = new ParametreModel();
+        $goldPrice = (float) ($paramModel->getValeur('prix_gold', '15000'));
+
         return view('gold/activer', [
             'utilisateur' => $utilisateur,
-            'goldPrice' => self::GOLD_PRICE
+            'goldPrice' => $goldPrice
         ]);
     }
 
@@ -67,15 +72,18 @@ class GoldController extends BaseController
             return redirect()->to('/gold');
         }
 
+        $paramModel = new ParametreModel();
+        $goldPrice = (float) ($paramModel->getValeur('prix_gold', '15000'));
+
         $solde = (float) ($utilisateur['solde'] ?? 0);
-        if ($solde < self::GOLD_PRICE) {
+        if ($solde < $goldPrice) {
             session()->setFlashdata('error', 'Solde insuffisant pour activer l’option Gold.');
             return redirect()->to('/gold/activer');
         }
 
         $model->update($user['id'], [
             'est_gold' => 1,
-            'solde' => $solde - self::GOLD_PRICE
+            'solde' => $solde - $goldPrice
         ]);
 
         session()->setFlashdata('success', 'Option Gold activée avec succès.');
