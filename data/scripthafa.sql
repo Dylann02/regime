@@ -148,7 +148,7 @@ CREATE TABLE admins (
 ) ENGINE=InnoDB;
 
 -- ============================================================
---  DONNÉES MINIMALES
+--  DONNÉES MINIMALESji
 -- ============================================================
 
 -- --- 1 admin par défaut ---
