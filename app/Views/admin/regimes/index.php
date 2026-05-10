@@ -55,10 +55,10 @@
                                 </td>
                                 <td>
                                     <div class="table-actions">
-                                        <a class="btn btn-secondary btn-small" href="<?= base_url('admin/regimes/edit/' . $regime['id']) ?>">✏️ Modifier</a>
+                                        <a class="btn btn-secondary btn-small" href="<?= base_url('admin/regimes/edit/' . $regime['id']) ?>">Modifier</a>
                                         <form action="<?= base_url('admin/regimes/delete/' . $regime['id']) ?>" method="post" onsubmit="return confirm('Supprimer ce régime ?');">
                                             <?= csrf_field() ?>
-                                            <button class="btn btn-danger btn-small" type="submit">🗑️ Supprimer</button>
+                                            <button class="btn btn-danger btn-small" type="submit">Supprimer</button>
                                         </form>
                                     </div>
                                 </td>

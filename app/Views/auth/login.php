@@ -23,13 +23,13 @@
             <div class="container">
         <?php if (isset($erreur)): ?>
             <div class="message error">
-                ❌ <?= esc($erreur) ?>
+                <?= esc($erreur) ?>
             </div>
         <?php endif; ?>
 
         <?php if (isset($erreurs) && is_array($erreurs)): ?>
             <div class="message error">
-                <div style="font-weight: 600; margin-bottom: 0.5rem;">❌ Erreurs détectées:</div>
+                <div style="font-weight: 600; margin-bottom: 0.5rem;">Erreurs détectées:</div>
                 <?php foreach ($erreurs as $error): ?>
                     <div>• <?= esc($error) ?></div>
                 <?php endforeach; ?>
@@ -43,22 +43,30 @@
                 <?= csrf_field() ?>
 
                 <div class="form-group">
-                    <label for="email">📧 Email *</label>
-                    <input type="email" id="email" name="email" placeholder="votre@email.com" value="<?= set_value('email') ?>" required>
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" placeholder="votre@email.com" value="<?= set_value('email', 'admin@projet.mg') ?>" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="mot_de_passe">🔐 Mot de passe *</label>
+                    <label for="mot_de_passe">Mot de passe *</label>
                     <input type="password" id="mot_de_passe" name="mot_de_passe" placeholder="Entrez votre mot de passe" required>
                 </div>
 
                 <div class="actions" style="margin-top: 24px; justify-content: center;">
-                    <button type="submit" class="btn btn-primary" style="padding: 12px 24px; font-size: 1rem;">✓ Se Connecter</button>
+                    <button type="submit" class="btn btn-primary" style="padding: 12px 24px; font-size: 1rem;">Se Connecter</button>
                 </div>
             </form>
 
-            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #f0f0f0; text-align: center;">
-                <p style="margin:0; color:#666;">Pas encore de compte? <a href="<?= base_url('inscription') ?>" style="color: var(--primary-color); font-weight: 600; text-decoration: none;">S'inscrire maintenant →</a></p>
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #f0f0f0;">
+                <p style="margin:0 0 12px 0; color:#666; text-align: center;">Pas encore de compte? <a href="<?= base_url('inscription') ?>" style="color: var(--primary-color); font-weight: 600; text-decoration: none;">S'inscrire maintenant</a></p>
+                
+                <div style="background: #f5f5f5; padding: 12px; border-radius: 6px; border-left: 3px solid #2196f3; font-size: 0.9rem; color: #333;">
+                    <strong>Identifiants de test (Admin):</strong>
+                    <div style="margin-top: 6px; font-family: monospace; background: #fff; padding: 8px; border-radius: 4px;">
+                        Email: <span style="color: #c85a3b;">admin@projet.mg</span><br>
+                        Mot de passe: <span style="color: #c85a3b;">12345678</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

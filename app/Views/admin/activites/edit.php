@@ -13,18 +13,18 @@
                 </div>
             <?php endif; ?>
 
-            <h2 style="margin-top:0; color:#333; margin-bottom:24px;">🏃 <?= $title ?></h2>
+            <h2 style="margin-top:0; color:#333; margin-bottom:24px;">Modifier une activite</h2>
             
             <form action="<?= base_url('admin/activites/update/' . $activite['id']) ?>" method="post">
                 <?= csrf_field() ?>
                 
                 <div class="form-group">
-                    <label for="nom">📝 Nom de l'activité *</label>
+                    <label for="nom">Nom de l'activite *</label>
                     <input type="text" id="nom" name="nom" placeholder="ex: Marche rapide" value="<?= esc(old('nom', $activite['nom'])) ?>" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="description">📄 Description</label>
+                    <label for="description">Description</label>
                     <textarea id="description" name="description" placeholder="Décrivez cette activité..." rows="4"><?= esc(old('description', $activite['description'])) ?></textarea>
                 </div>
                 
@@ -40,13 +40,13 @@
                 
                 <div class="form-group" style="margin-bottom: 24px;">
                     <label>
-                        <input type="checkbox" name="est_actif" value="1" <?= old('est_actif', $activite['est_actif']) ? 'checked' : '' ?>> ✓ Activité active
+                        <input type="checkbox" name="est_actif" value="1" <?= !empty($activite['est_actif']) ? 'checked' : '' ?>> Activite active
                     </label>
                 </div>
                 
                 <div class="actions" style="justify-content: flex-start;">
-                    <button class="btn btn-primary btn-icon" type="submit">✓ Enregistrer</button>
-                    <a class="btn btn-secondary btn-icon" href="<?= base_url('admin/activites') ?>">✕ Annuler</a>
+                    <button class="btn btn-primary btn-icon" type="submit">Enregistrer</button>
+                    <a class="btn btn-secondary btn-icon" href="<?= base_url('admin/activites') ?>">Annuler</a>
                 </div>
             </form>
         </div>
