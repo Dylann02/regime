@@ -17,6 +17,51 @@
             color: #333;
         }
 
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 240px;
+            background: #1f2a44;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem 1rem;
+        }
+
+        .sidebar .brand {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .sidebar-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.7rem 1rem;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
         .navbar {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -236,6 +281,27 @@
         }
 
         @media (max-width: 768px) {
+            .layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .sidebar .brand {
+                margin-bottom: 0;
+            }
+
+            .sidebar-nav {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+
             .charts-grid {
                 grid-template-columns: 1fr;
             }
@@ -263,14 +329,25 @@
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <h1>📊 Tableau de Bord</h1>
-        <div class="nav-links">
-            <a href="/logout">Déconnexion</a>
-        </div>
-    </div>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="brand">⚙️ Admin</div>
+            <nav class="sidebar-nav">
+                <a class="active" href="<?= base_url('dashboard') ?>">Tableau de bord</a>
+                <a href="<?= base_url('admin/regimes') ?>">Régimes</a>
+                <a href="<?= base_url('admin/activites') ?>">Activités sportives</a>
+                <a href="<?= base_url('admin/parametres') ?>">Paramètres</a>
+                <a href="<?= base_url('logout') ?>">Déconnexion</a>
+            </nav>
+        </aside>
 
-    <div class="container">
+        <div class="main-content">
+            <div class="navbar">
+                <h1>📊 Tableau de Bord</h1>
+                <div class="nav-links"></div>
+            </div>
+
+            <div class="container">
         <!-- Statistiques clés -->
         <div class="stats-grid">
             <div class="stat-card">
@@ -479,6 +556,8 @@
                     <p>Aucun utilisateur enregistré</p>
                 </div>
                 <?php endif; ?>
+            </div>
+        </div>
             </div>
         </div>
     </div>

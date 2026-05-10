@@ -167,7 +167,7 @@ class SuggestionController extends BaseController
 
         $pdf->SetFont('Arial', '', 12);
         $pdf->Cell(0, 8, utf8_decode('Utilisateur : ' . $utilisateur['nom'] . ' ' . $utilisateur['prenom']), 0, 1);
-        $pdf->Cell(0, 7, utf8_decode('Poids actuel : ' . number_format($utilisateur['poids_actuel'], 2) . ' kg'), 0, 1);
+        $pdf->Cell(0, 7, utf8_decode('Poids actuel : ' . number_format((float) $utilisateur['poids_actuel'], 2) . ' kg'), 0, 1);
         $pdf->Cell(0, 7, utf8_decode('Poids cible : ' . number_format($suggestions['calculs']['poids_cible'], 2) . ' kg'), 0, 1);
         $pdf->Cell(0, 7, utf8_decode('Variation nécessaire : ' . number_format($suggestions['calculs']['delta_kg'], 2) . ' kg'), 0, 1);
 
@@ -203,9 +203,9 @@ class SuggestionController extends BaseController
         $regimeModel = new RegimeModel();
         $prixModel = new RegimePrixModel();
         $activiteModel = new ActiviteModel();
+        $paramModel = new \App\Models\ParametreModel();
 
         $poidsActuel = (float) $utilisateur['poids_actuel'];
-        $tailleCm = (float) $utilisateur['taille_cm'];
         $valeurObjectif = (float) $utilisateur['valeur_objectif'];
         $objectifType = $utilisateur['objectif_actuel'];
 
@@ -250,6 +250,7 @@ class SuggestionController extends BaseController
 
         // Étape 5 & 6 : Durée par régime et Prix
         $estGold = !empty($utilisateur['est_gold']);
+        $remisePercent = (float) $paramModel->getValeur('remise_gold', '15');
 
         foreach ($regimesCompatibles as $regime) {
             $variationHebdo = abs((float) $regime['variation_kg_semaine']);
@@ -265,7 +266,7 @@ class SuggestionController extends BaseController
             
             if ($palier) {
                 $prixBase = (float) $palier['prix'];
-                $remiseGold = $estGold ? round($prixBase * 0.15, 2) : 0.0;
+                $remiseGold = $estGold ? round($prixBase * ($remisePercent / 100), 2) : 0.0;
                 $prixFinal = $prixBase - $remiseGold;
                 
                 // Ajouter à la liste finale

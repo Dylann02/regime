@@ -11,6 +11,13 @@
     <p><strong>Prix :</strong> <?= number_format($goldPrice, 0, ',', ' ') ?> Ar</p>
     <p><strong>Solde actuel :</strong> <?= number_format($utilisateur['solde'] ?? 0, 0, ',', ' ') ?> Ar</p>
 
+    <?php if (session()->getFlashdata('error')): ?>
+        <p style="color: red;"><strong><?= session()->getFlashdata('error') ?></strong></p>
+    <?php endif; ?>
+    <?php if (session()->getFlashdata('success')): ?>
+        <p style="color: green;"><strong><?= session()->getFlashdata('success') ?></strong></p>
+    <?php endif; ?>
+
     <?php if (!empty($utilisateur['est_gold'])): ?>
         <p><strong>Vous êtes déjà membre Gold ✅</strong></p>
         <p><a href="<?= base_url('profil') ?>">Retour au profil</a></p>

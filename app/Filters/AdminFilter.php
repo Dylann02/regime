@@ -16,8 +16,8 @@ class AdminFilter implements FilterInterface {
             return redirect()->to('/login')->with('error', 'Veuillez vous connecter.');
         }
         
-        // Vérifier si l'utilisateur est un admin
-        if ($user['type'] !== 'admin') {
+        // Vérifier si l'utilisateur est un admin (clé 'type' peut être absente)
+        if (!isset($user['type']) || $user['type'] !== 'admin') {
             return redirect()->to('/profil')->with('error', 'Accès réservé aux administrateurs.');
         }
     }
