@@ -103,11 +103,6 @@ INSERT INTO regime_prix (regime_id, nb_semaines, prix) VALUES
 (4,  1,   69.99), (4, 2,  129.99), (4, 4,  239.99), (4, 9,  429.99), (4, 13,  599.99),
 (5,  1,   59.99), (5, 2,  109.99), (5, 4,  199.99), (5, 9,  369.99), (5, 13,  499.99),
 (6,  1,   79.99), (6, 2,  149.99), (6, 4,  279.99), (6, 9,  499.99), (6, 13,  699.99);
-
-INSERT INTO admins (nom, prenom, email, mot_de_passe, role, est_actif)
-VALUES
-('Admin', 'Super', 'admin@projet.mg', '$2y$10$VN.rxTmRvAHzDxJ5v2R0iu0MlIwk5ELBNfVqqIjSUlpB1JXUoOuNm', 'super_admin', 1);
-
 -- ====================================================================
 -- FIN DES DONNÉES
 -- ====================================================================
