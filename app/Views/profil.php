@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Profil utilisateur</title>
 </head>
+
 <body>
     <div class="profile-container">
         <h2>Profil utilisateur</h2>
-
+        <?php if (session()->getFlashdata('success')): ?>
+            <p style="color:greenyellow"><?= session()->getFlashdata('success') ?> </p>
+        <?php endif; ?>
         <?php if (isset($message)): ?>
             <div style="color: green; background-color: #d4edda; padding: 10px; border-radius: 3px; margin-bottom: 15px;">
                 <?= esc($message) ?>
@@ -25,6 +29,8 @@
             <div class="info"><strong>Solde :</strong> <?= number_format($utilisateur['solde'] ?? 0, 2) ?> €</div>
             <div class="info"><strong>Statut Gold :</strong> <?= ($utilisateur['est_gold'] ?? 0) ? 'Oui' : 'Non' ?></div>
 
+
+
             <?php if (!empty($imc)): ?>
                 <div class="info"><strong>IMC :</strong> <?= number_format($imc, 2) ?></div>
             <?php endif; ?>
@@ -33,6 +39,7 @@
                 <a href="<?= base_url('profil/modifier') ?>" class="btn">Modifier profil</a>
                 <a href="<?= base_url('suggestions') ?>" class="btn">Voir les suggestions de régime</a>
                 <a href="<?= base_url('gold') ?>" class="btn">Passer à l'option Gold</a>
+                <a href="<?= base_url('ajoutArgent') ?>">Ajouter du credit</a>
                 <a href="<?= base_url('logout') ?>" class="btn logout-btn">Déconnexion</a>
             </div>
         <?php else: ?>
@@ -40,4 +47,5 @@
         <?php endif; ?>
     </div>
 </body>
+
 </html>
