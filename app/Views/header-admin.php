@@ -23,10 +23,10 @@
     <div class="admin-layout">
         <aside class="admin-sidebar">
             <nav class="sidebar-nav">
-                <a class="sidebar-link" href="<?= base_url('dashboard') ?>">📊 Tableau de bord</a>
-                <a class="sidebar-link" href="<?= base_url('admin/regimes') ?>">🍽️ Régimes</a>
-                <a class="sidebar-link" href="<?= base_url('admin/activites') ?>">🏃 Activités</a>
-                <a class="sidebar-link" href="<?= base_url('admin/parametres') ?>">⚙️ Paramètres</a>
+                <a class="sidebar-link" href="<?= base_url('dashboard') ?>">Tableau de bord</a>
+                <a class="sidebar-link" href="<?= base_url('admin/regimes') ?>">Régimes</a>
+                <a class="sidebar-link" href="<?= base_url('admin/activites') ?>"> Activités</a>
+                <a class="sidebar-link" href="<?= base_url('admin/parametres') ?>">Paramètres</a>
             </nav>
         </aside>
         
