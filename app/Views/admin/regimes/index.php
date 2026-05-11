@@ -16,7 +16,7 @@
         <?php endif; ?>
 
         <div class="actions">
-            <a class="btn btn-primary" href="<?= base_url('admin/regimes/create') ?>"> Ajouter un régime</a>
+            <a class="btn btn-primary" href="<?= base_url('admin/regimes/create') ?>">➕ Ajouter un régime</a>
             <a class="btn btn-secondary" href="<?= base_url('admin/activites') ?>">Voir les activités</a>
         </div>
 

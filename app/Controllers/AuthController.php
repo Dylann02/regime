@@ -12,6 +12,7 @@ class AuthController extends BaseController
 
     public function login()
     {
+        // Validation basique
         $rules = [
             'email' => 'required|valid_email',
             'mot_de_passe' => 'required|min_length[8]'
@@ -26,10 +27,12 @@ class AuthController extends BaseController
         $email = $this->request->getPost('email');
         $motDePasse = $this->request->getPost('mot_de_passe');
         
+        // ===== VÉRIFIER D'ABORD SI C'EST UN ADMIN =====
         $adminModel = new AdminModel();
         $admin = $adminModel->where('email', $email)->first();
         
         if ($admin && password_verify($motDePasse, $admin['mot_de_passe'])) {
+            // Authentification admin réussie
             session()->set('user', [
                 'id' => $admin['id'],
                 'nom' => $admin['nom'],
@@ -39,10 +42,12 @@ class AuthController extends BaseController
             return redirect()->to('/dashboard');
         }
         
+        // ===== SINON VÉRIFIER SI C'EST UN UTILISATEUR NORMAL =====
         $utilisateurModel = new UtilisateurModel();
         $user = $utilisateurModel->where('email', $email)->first();
         
         if ($user && password_verify($motDePasse, $user['mot_de_passe'])) {
+            // Authentification utilisateur réussie
             session()->set('user', [
                 'id' => $user['id'],
                 'nom' => $user['nom'],
@@ -53,6 +58,7 @@ class AuthController extends BaseController
             return redirect()->to('/profil');
         }
         
+        // ===== AUCUNE CORRESPONDANCE =====
         return view('auth/login', [
             'erreur' => 'Email ou mot de passe incorrect'
         ]);

@@ -6,7 +6,7 @@
         <div class="card">
             <?php if (!empty($errors) && is_array($errors)): ?>
                 <div class="message error">
-                    <div style="font-weight: 600; margin-bottom: 6px;"> Erreurs détectées:</div>
+                    <div style="font-weight: 600; margin-bottom: 6px;">❌ Erreurs détectées:</div>
                     <?php foreach ($errors as $message): ?>
                         <div>• <?= esc($message) ?></div>
                     <?php endforeach; ?>

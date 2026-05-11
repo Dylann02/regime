@@ -30,7 +30,9 @@ class ActiviteModel extends Model
         ]
     ];
 
-  
+    /**
+     * Récupérer les activités selon l'intensité (faible, moderee, elevee)
+     */
     public function getActivitesParIntensite($intensite)
     {
         return $this->where('intensite', $intensite)

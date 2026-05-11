@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\UtilisateurModel;
 use App\Models\AbonnementModel;
 use App\Models\RegimeModel;
+use App\Models\ActiviteModel;
 use App\Models\CreditModel;
 
 class DashboardController extends BaseController
@@ -16,6 +17,7 @@ class DashboardController extends BaseController
         $regimeModel = new RegimeModel();
         $creditModel = new CreditModel();
 
+        // Statistiques générales
         $stats = [
             'total_users' => $utilisateurModel->countAll(),
             'gold_users' => $utilisateurModel->where('est_gold', 1)->countAllResults(),
@@ -24,14 +26,16 @@ class DashboardController extends BaseController
             'total_regimes' => $regimeModel->where('est_actif', 1)->countAllResults(),
         ];
 
-
+        // Statistiques financières
         $creditsUsed = $creditModel->where('est_utilise', 1)->selectSum('montant')->first();
         $stats['total_revenue'] = $creditsUsed['montant'] ?? 0;
         
+        // Revenue from gold subscriptions
         $goldRevenue = $abonnementModel->selectSum('prix_paye')
             ->where('remise_gold_appliquee', 1)->first();
         $stats['gold_revenue'] = $goldRevenue['prix_paye'] ?? 0;
 
+        // Utilisateurs par objectif
         $objectifs = $utilisateurModel->select('objectif_actuel')
             ->where('objectif_actuel !=', null)
             ->groupBy('objectif_actuel')
@@ -45,6 +49,7 @@ class DashboardController extends BaseController
             }
         }
 
+        // Régimes les plus populaires
         $regimesPopulaires = $abonnementModel->select('regime_id')
             ->groupBy('regime_id')
             ->get()
@@ -62,6 +67,7 @@ class DashboardController extends BaseController
             }
         }
 
+        // Progrès moyen des utilisateurs
         $abonnements = $abonnementModel->select('poids_depart, poids_cible')
             ->where('poids_depart !=', null)
             ->where('poids_cible !=', null)
@@ -76,6 +82,7 @@ class DashboardController extends BaseController
             $data['avg_weight_loss'] = round($totalProgression / count($abonnements), 2);
         }
 
+        // Taux de succès
         $abonnementsSuccess = $abonnementModel->select('poids_depart, poids_cible')
             ->where('poids_depart !=', null)
             ->where('poids_cible !=', null)
@@ -92,6 +99,7 @@ class DashboardController extends BaseController
             $data['success_rate'] = round(($successCount / count($abonnementsSuccess)) * 100, 2);
         }
 
+        // Distribution par genre
         $genres = $utilisateurModel->select('genre')
             ->where('genre !=', null)
             ->groupBy('genre')
@@ -105,6 +113,7 @@ class DashboardController extends BaseController
             }
         }
 
+        // Données temporelles simplifiées - distributions par régime
         $data['weekly_data'] = [];
         $data['revenue_data'] = [];
 
