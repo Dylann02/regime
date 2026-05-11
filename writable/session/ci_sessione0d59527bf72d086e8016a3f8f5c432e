@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 __ci_last_regenerate|i:1778518592;_ci_previous_url|s:48:"http://localhost:8080/inscription/choix_objectif";user|a:4:{s:2:"id";s:1:"8";s:3:"nom";s:4:"test";s:6:"prenom";s:4:"test";s:5:"email";s:15:"test1@gmail.com";}user_id|i:9;
+=======
+__ci_last_regenerate|i:1778519835;user|a:4:{s:2:"id";s:1:"1";s:3:"nom";s:11:"Admin Super";s:5:"email";s:15:"admin@projet.mg";s:4:"type";s:5:"admin";}_ci_previous_url|s:31:"http://localhost:8080/dashboard";
+>>>>>>> Design_admin
