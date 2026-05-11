@@ -45,7 +45,8 @@ INSERT INTO utilisateurs (
     'Rakoto',
     'Jean',
     'jean@test.mg',
-    '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+    '$2y$12$DVH5RX/P.FElVmO0Pe.xvuixd8oOCyE5ER6gd2TzcpxCraCngi8jy
+',
     'homme',
     '1998-05-12',
     175,
@@ -59,7 +60,8 @@ INSERT INTO utilisateurs (
     'Rabe',
     'Sarah',
     'sarah@test.mg',
-    '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+    '$2y$12$DVH5RX/P.FElVmO0Pe.xvuixd8oOCyE5ER6gd2TzcpxCraCngi8jy
+',
     'femme',
     '2001-03-21',
     165,
@@ -74,7 +76,8 @@ INSERT INTO utilisateurs (
     'Andry',
     'Lucas',
     'lucas@test.mg',
-    '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+    '$2y$12$DVH5RX/P.FElVmO0Pe.xvuixd8oOCyE5ER6gd2TzcpxCraCngi8jy
+',
     'homme',
     '1995-11-10',
     180,
@@ -89,7 +92,8 @@ INSERT INTO utilisateurs (
     'Mickael',
     'Nina',
     'nina@test.mg',
-    '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+    '$2y$12$DVH5RX/P.FElVmO0Pe.xvuixd8oOCyE5ER6gd2TzcpxCraCngi8jy
+',
     'femme',
     '1999-07-18',
     160,
@@ -104,7 +108,8 @@ INSERT INTO utilisateurs (
     'Rasoanaivo',
     'Kevin',
     'kevin@test.mg',
-    '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+    '$2y$12$DVH5RX/P.FElVmO0Pe.xvuixd8oOCyE5ER6gd2TzcpxCraCngi8jy
+',
     'homme',
     '2000-09-30',
     170,

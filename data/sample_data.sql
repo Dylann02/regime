@@ -106,3 +106,6 @@ INSERT INTO regime_prix (regime_id, nb_semaines, prix) VALUES
 -- ====================================================================
 -- FIN DES DONNÉES
 -- ====================================================================
+
+
+$2y$12$DVH5RX/P.FElVmO0Pe.xvuixd8oOCyE5ER6gd2TzcpxCraCngi8jy
