@@ -45,9 +45,6 @@ class RegimeModel extends Model
         ]
     ];
 
-    /**
-     * Récupérer les régimes compatibles avec un objectif
-     */
     public function getRegimesParObjectif($objectif)
     {
         $builder = $this->builder();

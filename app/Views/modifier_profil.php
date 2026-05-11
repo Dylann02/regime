@@ -12,7 +12,7 @@
     <div class="container" style="max-width: 700px;">
         <?php if (isset($erreurs) && is_array($erreurs) && count($erreurs) > 0): ?>
             <div class="message error">
-                <div style="font-weight: 600; margin-bottom: 0.5rem;">❌ Erreurs détectées:</div>
+                <div style="font-weight: 600; margin-bottom: 0.5rem;">Erreurs détectées:</div>
                 <?php foreach ($erreurs as $message): ?>
                     <div>• <?= esc(is_array($message) ? implode(' ', $message) : $message) ?></div>
                 <?php endforeach; ?>

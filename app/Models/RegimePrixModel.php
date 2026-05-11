@@ -13,9 +13,6 @@ class RegimePrixModel extends Model
     ];
     protected $useTimestamps = false;
 
-    /**
-     * Obtenir le palier de prix pour un régime donné et un nombre de semaines
-     */
     public function getPalierPrix($regimeId, $nbSemaines)
     {
         $builder = $this->builder();
@@ -25,8 +22,7 @@ class RegimePrixModel extends Model
                 ->limit(1);
 
         $result = $builder->get()->getRowArray();
-        
-        // Si aucun palier assez grand n'est trouvé, on prend le palier maximum existant
+
         if (!$result) {
             $builder = $this->builder();
             $builder->where('regime_id', $regimeId)
