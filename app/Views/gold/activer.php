@@ -5,12 +5,12 @@
     <div class="container" style="max-width: 800px;">
         <?php if (session()->getFlashdata('error')): ?>
             <div class="message error">
-                ❌ <?= session()->getFlashdata('error') ?>
+                 <?= session()->getFlashdata('error') ?>
             </div>
         <?php endif; ?>
         <?php if (session()->getFlashdata('success')): ?>
             <div class="message success">
-                ✅ <?= session()->getFlashdata('success') ?>
+                 <?= session()->getFlashdata('success') ?>
             </div>
         <?php endif; ?>
 
