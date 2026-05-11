@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Activer l'option Gold</title>
-    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
-</head>
-<body>
-    <div class="header">
-        <h1>⭐ Confirmer l'activation Gold</h1>
-    </div>
+<?php $title = "Activer l'option Gold" ?>
+<?= $this->extend('modele') ?>
+<?= $this->section('content') ?>
 
     <div class="container" style="max-width: 600px;">
         <?php if (session()->getFlashdata('error')): ?>
@@ -60,14 +52,11 @@
                 <form action="<?= base_url('gold/activer') ?>" method="post">
                     <?= csrf_field() ?>
                     <div class="actions">
-                        <button type="submit" class="btn">Confirmer l'activation</button>
-                        <a href="<?= base_url('gold') ?>" class="btn secondary" style="text-decoration: none; text-align: center;">Annuler</a>
+                        <button type="submit" class="btn btn-primary">Confirmer l'activation</button>
+                        <a href="<?= base_url('gold') ?>" class="btn btn-secondary" style="text-decoration: none; text-align: center;">Annuler</a>
                     </div>
                 </form>
             <?php endif; ?>
         </div>
     </div>
-</body>
-</html>
-</body>
-</html>
+<?= $this->endSection() ?>

@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Choix de l'objectif</title>
-    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
-</head>
-<body>
-    <div class="header">
-        <h1>🎯 Définir votre objectif</h1>
-    </div>
+<?php $title = 'Choix de l\'objectif' ?>
+<?= $this->extend('modele') ?>
+<?= $this->section('content') ?>
 
     <div class="container" style="max-width: 700px;">
         <div class="chart-container mb-4">
@@ -63,7 +55,7 @@
                 </div>
 
                 <div class="actions" style="margin-top: 2rem;">
-                    <button type="submit" class="btn">Terminer l'inscription ✓</button>
+                    <button type="submit" class="btn btn-primary">Terminer l'inscription ✓</button>
                 </div>
             </form>
         </div>
@@ -102,5 +94,4 @@
             }
         }
     </script>
-</body>
-</html>
+<?= $this->endSection() ?>
