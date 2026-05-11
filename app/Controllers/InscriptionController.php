@@ -177,7 +177,9 @@ class InscriptionController extends BaseController
         }
 
         return view('modifier_profil', [
-            'utilisateur' => $utilisateur
+            'utilisateur' => $utilisateur,
+            'erreurs' => session()->getFlashdata('errors'),
+            'poidsIdeal' => $model->getPoidsIdeal($user['id'])
         ]);
     }
 
@@ -203,15 +205,25 @@ class InscriptionController extends BaseController
             'date_naissance' => $this->request->getPost('date_naissance'),
             'taille_cm' => $this->request->getPost('taille_cm'),
             'poids_actuel' => $this->request->getPost('poids_actuel'),
+            'objectif_actuel' => $this->request->getPost('objectif_actuel'),
+            'valeur_objectif' => $this->request->getPost('valeur_objectif'),
         ];
 
-        $model->set($data)->where('id', $userId)->update();
+        if (($data['objectif_actuel'] ?? '') === 'imc_ideal') {
+            $data['valeur_objectif'] = $model->getPoidsIdeal($userId) ?? $data['valeur_objectif'];
+        }
+
+        if (! $model->updateProfil($userId, $data)) {
+            return redirect()->back()
+                ->withInput()
+                ->with('errors', $model->errors());
+        }
         
         $utilisateurMisAjour = $model->find($userId);
         if (! $utilisateurMisAjour) {
             return redirect()->to('/profil')->with('error', 'Erreur lors de la récupération des données');
         }
-        
+         
         session()->set('user', [
             'id' => $userId,
             'nom' => $utilisateurMisAjour['nom'],

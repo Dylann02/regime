@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 use App\Models\UtilisateurModel;
+use App\Models\AdminModel;
 
 class AuthController extends BaseController
 {
@@ -11,8 +12,8 @@ class AuthController extends BaseController
 
     public function login()
     {
-        $model = new UtilisateurModel();
-                $rules = [
+        // Validation basique
+        $rules = [
             'email' => 'required|valid_email',
             'mot_de_passe' => 'required|min_length[8]'
         ];
@@ -25,23 +26,42 @@ class AuthController extends BaseController
         
         $email = $this->request->getPost('email');
         $motDePasse = $this->request->getPost('mot_de_passe');
-        $user = $model->where('email', $email)->first();
         
-        if (!$user || !password_verify($motDePasse, $user['mot_de_passe'])) {
-            return view('auth/login', [
-                'erreur' => 'Email ou mot de passe incorrect'
+        // ===== VÉRIFIER D'ABORD SI C'EST UN ADMIN =====
+        $adminModel = new AdminModel();
+        $admin = $adminModel->where('email', $email)->first();
+        
+        if ($admin && password_verify($motDePasse, $admin['mot_de_passe'])) {
+            // Authentification admin réussie
+            session()->set('user', [
+                'id' => $admin['id'],
+                'nom' => $admin['nom'],
+                'email' => $admin['email'],
+                'type' => 'admin'
             ]);
+            return redirect()->to('/dashboard');
         }
         
-        // Stocker uniquement les données non sensibles en session
-        session()->set('user', [
-            'id' => $user['id'],
-            'nom' => $user['nom'],
-            'prenom' => $user['prenom'],
-            'email' => $user['email']
-        ]);
+        // ===== SINON VÉRIFIER SI C'EST UN UTILISATEUR NORMAL =====
+        $utilisateurModel = new UtilisateurModel();
+        $user = $utilisateurModel->where('email', $email)->first();
         
-        return redirect()->to('/profil');
+        if ($user && password_verify($motDePasse, $user['mot_de_passe'])) {
+            // Authentification utilisateur réussie
+            session()->set('user', [
+                'id' => $user['id'],
+                'nom' => $user['nom'],
+                'prenom' => $user['prenom'],
+                'email' => $user['email'],
+                'type' => 'user'
+            ]);
+            return redirect()->to('/profil');
+        }
+        
+        // ===== AUCUNE CORRESPONDANCE =====
+        return view('auth/login', [
+            'erreur' => 'Email ou mot de passe incorrect'
+        ]);
     }
 
     public function logout()

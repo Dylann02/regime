@@ -1,46 +1,64 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Choix de l'objectif</title>
-</head>
-<body>
-    <div class="objectif-container">
-        <h2>Informations de santé</h2>
-        
-        <div class="info"><strong>Poids actuel :</strong> <?= esc($utilisateur['poids_actuel']) ?> kg</div>
-        
-        <?php if (!empty($imc)): ?>
-            <div class="info"><strong>Votre IMC :</strong> <?= number_format($imc, 2) ?></div>
-        <?php endif; ?>
+<?php $title = 'Choix de l\'objectif' ?>
+<?= $this->extend('modele') ?>
+<?= $this->section('content') ?>
 
-        <?php if (!empty($poidsIdeal)): ?>
-            <div class="info"><strong>Votre poids idéal :</strong> <?= number_format($poidsIdeal, 2) ?> kg</div>
-        <?php endif; ?>
+    <div class="container" style="max-width: 700px;">
+        <div class="chart-container mb-4">
+            <h3 style="border-bottom: 3px solid var(--primary); padding-bottom: 1rem; margin-bottom: 1.5rem; color: var(--primary);">📊 Informations de santé</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div class="stat-card">
+                    <div class="stat-label">Poids actuel</div>
+                    <div class="stat-value"><?= esc($utilisateur['poids_actuel']) ?></div>
+                    <div class="stat-unit">kg</div>
+                </div>
+                
+                <?php if (!empty($imc)): ?>
+                    <div class="stat-card info">
+                        <div class="stat-label">Votre IMC</div>
+                        <div class="stat-value"><?= number_format($imc, 1) ?></div>
+                        <div class="stat-unit">indice</div>
+                    </div>
+                <?php endif; ?>
 
-        <h3>Choisissez votre objectif</h3>
-        <form action="<?= base_url('inscription/save_objectif') ?>" method="post">
-            <?= csrf_field() ?>
-            <div>
-                <label for="objectif_actuel">Objectif :</label>
-                <select name="objectif_actuel" id="objectif_actuel" onchange="changerObjectif()" required>
-                    <option value="">-- Sélectionnez un objectif --</option>
-                    <option value="reduire">Réduire le poids</option>
-                    <option value="augmenter">Augmenter le poids</option>
-                    <option value="imc_ideal">Atteindre le poids idéal</option>
-                </select>
+                <?php if (!empty($poidsIdeal)): ?>
+                    <div class="stat-card success">
+                        <div class="stat-label">Poids idéal</div>
+                        <div class="stat-value"><?= number_format($poidsIdeal, 1) ?></div>
+                        <div class="stat-unit">kg</div>
+                    </div>
+                <?php endif; ?>
             </div>
+        </div>
+
+        <div class="card">
+            <h2 style="margin-top: 0; color: var(--primary); margin-bottom: 1.5rem;">Choisissez votre objectif</h2>
             
-            <div id="div_valeur_objectif" style="margin-top: 15px; display: none;">
-                <label id="label_valeur_objectif" for="valeur_objectif">Valeur :</label>
-                <input type="number" step="0.01" name="valeur_objectif" id="valeur_objectif" min="0.1">
-                <span> kg</span>
-            </div>
-            
-            <div style="margin-top: 20px;">
-                <button type="submit">Terminer l'inscription</button>
-            </div>
-        </form>
+            <form action="<?= base_url('inscription/save_objectif') ?>" method="post">
+                <?= csrf_field() ?>
+                
+                <div class="form-group">
+                    <label for="objectif_actuel">Objectif *</label>
+                    <select name="objectif_actuel" id="objectif_actuel" onchange="changerObjectif()" required>
+                        <option value="">-- Sélectionnez un objectif --</option>
+                        <option value="reduire">📉 Réduire le poids</option>
+                        <option value="augmenter">📈 Augmenter le poids</option>
+                        <option value="imc_ideal">✨ Atteindre le poids idéal</option>
+                    </select>
+                </div>
+                
+                <div id="div_valeur_objectif" style="display: none;">
+                    <div class="form-group">
+                        <label id="label_valeur_objectif" for="valeur_objectif">Valeur *</label>
+                        <input type="number" step="0.01" name="valeur_objectif" id="valeur_objectif" min="0.1">
+                    </div>
+                </div>
+
+                <div class="actions" style="margin-top: 2rem;">
+                    <button type="submit" class="btn btn-primary">Terminer l'inscription ✓</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script>
@@ -76,5 +94,4 @@
             }
         }
     </script>
-</body>
-</html>
+<?= $this->endSection() ?>
